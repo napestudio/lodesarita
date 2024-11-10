@@ -1,0 +1,5 @@
+{
+  "repositoryName": "lodesarita",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": ["./slices"]
+}
