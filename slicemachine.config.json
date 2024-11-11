@@ -1,5 +1,6 @@
 {
-  "repositoryName": "lodesarita",
+  "repositoryName": "saritahotel",
   "adapter": "@slicemachine/adapter-next",
-  "libraries": ["./slices"]
+  "libraries": ["./components/slices"],
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
 }

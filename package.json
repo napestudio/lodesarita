@@ -6,16 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
-    "@react-three/drei": "^9.107.0",
-    "@react-three/fiber": "^8.16.8",
-    "@react-three/postprocessing": "^2.16.2",
-    "@types/three": "^0.165.0",
+    "@prismicio/client": "^7.12.0",
+    "@prismicio/next": "^1.7.1",
+    "@prismicio/react": "^2.9.1",
     "gsap": "^3.12.5",
     "leva": "^0.9.35",
-    "maath": "^0.10.7",
     "next": "^14.2.5",
     "react": "^18",
     "react-dom": "^18",

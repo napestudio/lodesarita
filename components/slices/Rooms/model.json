@@ -1,0 +1,47 @@
+{
+  "id": "rooms",
+  "type": "SharedSlice",
+  "name": "Rooms",
+  "description": "Rooms",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "titulo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "parrafo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Parrafo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "habitaciones": {
+          "type": "Link",
+          "config": {
+            "label": "Habitaciones",
+            "select": "document",
+            "customtypes": [
+              "room"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

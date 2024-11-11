@@ -1,0 +1,38 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"titulo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Receive"
+						}
+					}
+				]
+			},
+			"parrafo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Incididunt ea qui amet officia ad ullamco. Consectetur quis Lorem anim fugiat commodo commodo laboris aliquip. Sint consectetur amet commodo deserunt ea ea consectetur ea officia duis aliquip reprehenderit mollit nostrud et."
+						}
+					}
+				]
+			},
+			"habitaciones": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
+			}
+		},
+		"items": []
+	}
+]
