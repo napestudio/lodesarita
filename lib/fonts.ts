@@ -6,9 +6,9 @@ const primaryFont = localFont({
   display: "swap",
   src: [
     {
-      path: "../assets/fonts/HelveticaLTStd-Light.woff2",
-      weight: "100",
-      style: "normal",
+      path: "../assets/fonts/Gilton-Bold.otf",
+      weight: "700",
+      style: "bold",
     }
   ],
 });
@@ -19,10 +19,15 @@ const secondaryFont = localFont({
   display: "swap",
   src: [
     {
-      path: "../assets/fonts/DidotRegular.woff2",
-      weight: "400",
-      style: "normal",
+      path: "../assets/fonts/Branding-Bold.otf",
+      weight: "700",
+      style: "bold",
     },
+    {
+      path: "../assets/fonts/Branding-Light.otf",
+      weight: "400",
+      style: "light",
+    }
   ],
 });
 

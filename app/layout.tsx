@@ -13,7 +13,7 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/lib/constants";
-import { primaryFont } from "@/lib/fonts";
+import { primaryFont, secondaryFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { repositoryName } from "@/prismicio";
 //import { GoogleAnalytics } from "@next/third-parties/google";
@@ -35,7 +35,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={SITE_LANG} className={cn(primaryFont.variable)}>
+    <html
+      lang={SITE_LANG}
+      className={cn([primaryFont.variable, secondaryFont.variable])}
+    >
       <body>
         {/*<Client />*/}
         {/*<Header />*/}

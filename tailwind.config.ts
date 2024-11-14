@@ -16,6 +16,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-primary)", ...defaultTheme.fontFamily.sans],
+        text: ["var(--font-secondary)", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         background: "var(--background)",
