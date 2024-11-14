@@ -2,22 +2,138 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  /* width: 100vw;
-  height: 100vh; */
-}
+@layer base {
+  :root {
+    /* If you want to add more variables here, you should also add them to tailwind.config.ts. */
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: black;
-  margin: 0;
-}
+    --background: #fff;
+    --foreground: #000;
+    --muted: #eee;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+    --primary: #ff5a5f;
+    --primary-dark: #db393e;
+    --primary-foreground: #fff;
+
+    --bosque-normal: #082d1e;
+
+    --arena-normal: #ebb572;
+
+    --ocaso-normal: #de6536;
+
+    --mar-normal: #78a8cf;
+
   }
+
+  /* @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #000;
+      --foreground: #fff;
+      --muted: #333;
+    }
+  } */
+
+  html {
+    /* cursor: none; */
+    font-size: 16px;
+    @apply antialiased;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: clamp(16px, calc(16px + (2 * ((100vw - 1024px) / 656))), 18px);
+    }
+  }
+
+  @media (min-width: 1680px) {
+    html {
+      font-size: clamp(18px, calc(18px + (6 * ((100vw - 1680px) / 880))), 24px);
+    }
+  }
+
+  @media (min-width: 2560px) {
+    html {
+      font-size: calc(1.5rem + 0.5vw);
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  .prismic-text-block h2 {
+    @apply text-3xl sm:text-4xl mt-6 mb-6 font-serif text-center;
+  }
+  .prismic-text-block-thanks h2 {
+    @apply text-2xl sm:text-3xl mt-3 mb-2;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-5 md:px-8 lg:px-12 xl:px-16 2xl:px-24;
+  }
+  .block-img {
+    @apply relative rounded-3xl overflow-hidden m-5;
+  }
+}
+
+.prismic-text-block-thanks p {
+  margin-block: 1rem;
+}
+.prismic-text-block p {
+  margin-block: 1rem;
+}
+
+.prismic-text-block a {
+  color: var(--parana-purple);
+  transition: color 200ms linear;
+}
+
+.prismic-text-block a:hover {
+  color: var(--parana-purple-dark);
+}
+
+.prismic-text-block h6 {
+  font-size: 1rem;
+  margin-inline: 1.25rem;
+  margin-top: -2rem;
+  padding-left: 1rem;
+  color: #6a6a6a;
+}
+
+.block-img {
+  margin-bottom: 1rem;
+
+  padding: 1rem;
+}
+
+.block-img img {
+  border-radius: 2rem;
+}
+
+.stroke-text {
+  -webkit-text-stroke: 2px #000000;
+  text-stroke: 2px #000000;
+}
+
+/* Lenis */
+/* https://github.com/studio-freight/lenis?tab=readme-ov-file#recommended-css */
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

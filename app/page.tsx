@@ -1,10 +1,31 @@
-import { cms, createClient } from "@/prismicio";
-import { components } from "@/components/slices";
+import { Metadata } from "next";
 import { SliceZone } from "@prismicio/react";
 
-export default async function Home() {
-  const home = await cms.getSingle("home");
-  return <SliceZone slices={home.data.slices} components={components} />;
+import { createClient } from "@/prismicio";
+import { components } from "@/components/slices";
+import { SITE_DESCRPTION, SITE_NAME } from "@/lib/constants";
+
+export default async function Page() {
+  const client = createClient();
+  const page = await client.getSingle("home");
+
+  return <SliceZone slices={page.data.slices} components={components} />;
 }
 
-// TODO: agregar metadata (ver el script que usamos en paranaextremo)
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const page = await client.getSingle("home");
+
+  return {
+    title: page.data.meta_title || SITE_NAME,
+    description: page.data.meta_description || SITE_DESCRPTION,
+    openGraph: {
+      title: page.data.meta_title || undefined,
+      images: [
+        {
+          url: page.data.meta_image.url || "",
+        },
+      ],
+    },
+  };
+}
