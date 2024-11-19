@@ -126,7 +126,25 @@ interface RoomDocumentData {
 export type RoomDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<RoomDocumentData>, "room", Lang>;
 
-export type AllDocumentTypes = HomeDocument | RoomDocument;
+interface SettingsDocumentData {}
+
+/**
+ * settings document from Prismic
+ *
+ * - **API ID**: `settings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SettingsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SettingsDocumentData>,
+    "settings",
+    Lang
+  >;
+
+export type AllDocumentTypes = HomeDocument | RoomDocument | SettingsDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -403,6 +421,8 @@ declare module "@prismicio/client" {
       RoomDocument,
       RoomDocumentData,
       RoomDocumentDataSlicesSlice,
+      SettingsDocument,
+      SettingsDocumentData,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,

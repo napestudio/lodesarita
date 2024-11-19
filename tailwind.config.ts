@@ -19,38 +19,25 @@ const config: Config = {
         text: ["var(--font-secondary)", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        muted: "var(--muted)",
-        primary: {
-          DEFAULT: "var(--primary)",
-          dark: "var(--primary-dark)",
-          foreground: "var(--primary-foreground)",
+        verde: {
+          DEFAULT: "var(--verde)",
+          dark: "var(--verde-dark)",
+          light: "var(--verde-light)",
         },
-        secondary: {
-          DEFAULT: "var(--secondary)",
-          dark: "var(--secondary-dark)",
-          foreground: "var(--secondary-foreground)",
+        amarillo: {
+          DEFAULT: "var(--amarillo)",
+          dark: "var(--amarillo-dark)",
+          light: "var(--amarillo-light)",
         },
-        bosque: {
-          DEFAULT: "var(--bosque-normal)",
-          dark: "var(--parana-purple-dark)",
-          light: "var(--parana-purple-light)",
+        naranja: {
+          DEFAULT: "var(--naranja)",
+          dark: "var(--naranja-dark)",
+          light: "var(--naranja-light)",
         },
-        arena: {
-          DEFAULT: "var(--arena-normal)",
-          dark: "var(--parana-green-dark)",
-          light: "var(--parana-green-light)",
-        },
-        ocaso: {
-          DEFAULT: "var(--ocaso-normal)",
-          dark: "var(--parana-orange-dark)",
-          light: "var(--parana-orange-light)",
-        },
-        mar: {
-          DEFAULT: "var(--mar-normal)",
-          dark: "var(--parana-yellow-dark)",
-          light: "var(--parana-yellow-light)",
+        celeste: {
+          DEFAULT: "var(--celeste)",
+          dark: "var(--celeste-dark)",
+          light: "var(--celeste-light)",
         },
       },
     },

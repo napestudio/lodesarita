@@ -1,0 +1,10 @@
+{
+  "format": "custom",
+  "id": "settings",
+  "json": {
+    "Main": {}
+  },
+  "label": "settings",
+  "repeatable": false,
+  "status": true
+}

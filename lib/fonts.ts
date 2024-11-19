@@ -6,7 +6,7 @@ const primaryFont = localFont({
   display: "swap",
   src: [
     {
-      path: "../assets/fonts/Gilton-Bold.otf",
+      path: "../assets/fonts/Gilton-Bold.woff2",
       weight: "700",
       style: "bold",
     }
@@ -19,12 +19,12 @@ const secondaryFont = localFont({
   display: "swap",
   src: [
     {
-      path: "../assets/fonts/Branding-Bold.otf",
+      path: "../assets/fonts/BrandingBold.woff2",
       weight: "700",
       style: "bold",
     },
     {
-      path: "../assets/fonts/Branding-Light.otf",
+      path: "../assets/fonts/BrandingLight.woff2",
       weight: "400",
       style: "light",
     }

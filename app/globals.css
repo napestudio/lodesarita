@@ -6,21 +6,13 @@
   :root {
     /* If you want to add more variables here, you should also add them to tailwind.config.ts. */
 
-    --background: #fff;
-    --foreground: #000;
-    --muted: #eee;
+    --verde: #082d1e;
 
-    --primary: #ff5a5f;
-    --primary-dark: #db393e;
-    --primary-foreground: #fff;
+    --amarillo: #ebb572;
 
-    --bosque-normal: #082d1e;
+    --naranja: #de6536;
 
-    --arena-normal: #ebb572;
-
-    --ocaso-normal: #de6536;
-
-    --mar-normal: #78a8cf;
+    --celeste: #78a8cf;
 
   }
 
@@ -56,9 +48,6 @@
     }
   }
 
-  body {
-    @apply bg-background text-foreground;
-  }
 
 }
 
