@@ -1,9 +1,5 @@
 import "@/app/globals.css";
 import { Client } from "@/components/client";
-/*import CustomCursor from "@/components/custom-cursor";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { Toaster } from "@/components/ui/toaster";*/
 import {
   ENABLE_PRISMIC_PREVIEW,
   GOOGLE_ANALYTICS_ID,
@@ -40,20 +36,14 @@ export default function RootLayout({
       className={cn([primaryFont.variable, secondaryFont.variable])}
     >
       <body>
-        {/*<Client />*/}
-        {/*<Header />*/}
+        <Client />
         {children}
-        {/*<Footer />*/}
         {(IS_PROD || ENABLE_PRISMIC_PREVIEW) && (
           <PrismicPreview repositoryName={repositoryName} />
         )}
         {/*IS_PROD && GOOGLE_ANALYTICS_ID && (
           <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
         )*/}
-        {/*<Indice />
-        <CustomCursor />
-        <LastScrollPosition />
-        <Toaster />*/}
       </body>
     </html>
   );
