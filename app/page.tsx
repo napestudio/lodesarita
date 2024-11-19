@@ -9,7 +9,11 @@ export default async function Page() {
   const client = createClient();
   const page = await client.getSingle("home");
 
-  return <SliceZone slices={page.data.slices} components={components} />;
+  return (
+    <main>
+      <SliceZone slices={page.data.slices} components={components} />
+    </main>
+  );
 }
 
 export async function generateMetadata(): Promise<Metadata> {

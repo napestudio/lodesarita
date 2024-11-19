@@ -6,7 +6,7 @@ import { intro, outro } from '@/lib/transitions'
 
 export function Client() {
   useGsapPlugins()
-  usePageTransition({ intro, outro })
+  //usePageTransition({ intro, outro })
 
   return null
 }
