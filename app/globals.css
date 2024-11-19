@@ -59,60 +59,14 @@
   body {
     @apply bg-background text-foreground;
   }
-  .prismic-text-block h2 {
-    @apply text-3xl sm:text-4xl mt-6 mb-6 font-serif text-center;
-  }
-  .prismic-text-block-thanks h2 {
-    @apply text-2xl sm:text-3xl mt-3 mb-2;
-  }
+
 }
 
 @layer components {
   .container {
     @apply px-5 md:px-8 lg:px-12 xl:px-16 2xl:px-24;
   }
-  .block-img {
-    @apply relative rounded-3xl overflow-hidden m-5;
-  }
-}
 
-.prismic-text-block-thanks p {
-  margin-block: 1rem;
-}
-.prismic-text-block p {
-  margin-block: 1rem;
-}
-
-.prismic-text-block a {
-  color: var(--parana-purple);
-  transition: color 200ms linear;
-}
-
-.prismic-text-block a:hover {
-  color: var(--parana-purple-dark);
-}
-
-.prismic-text-block h6 {
-  font-size: 1rem;
-  margin-inline: 1.25rem;
-  margin-top: -2rem;
-  padding-left: 1rem;
-  color: #6a6a6a;
-}
-
-.block-img {
-  margin-bottom: 1rem;
-
-  padding: 1rem;
-}
-
-.block-img img {
-  border-radius: 2rem;
-}
-
-.stroke-text {
-  -webkit-text-stroke: 2px #000000;
-  text-stroke: 2px #000000;
 }
 
 /* Lenis */
