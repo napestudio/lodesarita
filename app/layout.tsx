@@ -15,6 +15,7 @@ import { repositoryName } from "@/prismicio";
 //import { GoogleAnalytics } from "@next/third-parties/google";
 import { PrismicPreview } from "@prismicio/next";
 import type { Metadata } from "next";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: {
@@ -36,14 +37,16 @@ export default function RootLayout({
       className={cn([primaryFont.variable, secondaryFont.variable])}
     >
       <body>
-        <Client />
-        {children}
-        {(IS_PROD || ENABLE_PRISMIC_PREVIEW) && (
-          <PrismicPreview repositoryName={repositoryName} />
-        )}
-        {/*IS_PROD && GOOGLE_ANALYTICS_ID && (
+        <Providers>
+          <Client />
+          {children}
+          {(IS_PROD || ENABLE_PRISMIC_PREVIEW) && (
+            <PrismicPreview repositoryName={repositoryName} />
+          )}
+          {/*IS_PROD && GOOGLE_ANALYTICS_ID && (
           <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
         )*/}
+        </Providers>
       </body>
     </html>
   );
