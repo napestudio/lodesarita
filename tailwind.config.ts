@@ -19,25 +19,25 @@ const config: Config = {
         text: ["var(--font-secondary)", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        verde: {
-          DEFAULT: "var(--verde)",
-          dark: "var(--verde-dark)",
-          light: "var(--verde-light)",
+        green: {
+          DEFAULT: "var(--green)",
+          dark: "var(--green-dark)",
+          light: "var(--green-light)",
         },
-        amarillo: {
-          DEFAULT: "var(--amarillo)",
-          dark: "var(--amarillo-dark)",
-          light: "var(--amarillo-light)",
+        yellow: {
+          DEFAULT: "var(--yellow)",
+          dark: "var(--yellow-dark)",
+          light: "var(--yellow-light)",
         },
-        naranja: {
-          DEFAULT: "var(--naranja)",
-          dark: "var(--naranja-dark)",
-          light: "var(--naranja-light)",
+        orange: {
+          DEFAULT: "var(--orange)",
+          dark: "var(--orange-dark)",
+          light: "var(--orange-light)",
         },
-        celeste: {
-          DEFAULT: "var(--celeste)",
-          dark: "var(--celeste-dark)",
-          light: "var(--celeste-light)",
+        bluelight: {
+          DEFAULT: "var(--bluelight)",
+          dark: "var(--bluelight-dark)",
+          light: "var(--bluelight-light)",
         },
       },
     },

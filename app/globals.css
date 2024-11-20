@@ -6,13 +6,13 @@
   :root {
     /* If you want to add more variables here, you should also add them to tailwind.config.ts. */
 
-    --verde: #082d1e;
+    --green: #082d1e;
 
-    --amarillo: #ebb572;
+    --yellow: #ebb572;
 
-    --naranja: #de6536;
+    --orange: #de6536;
 
-    --celeste: #78a8cf;
+    --bluelight: #78a8cf;
 
   }
 
