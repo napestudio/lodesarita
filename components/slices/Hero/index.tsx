@@ -1,4 +1,4 @@
-import { Content } from "@prismicio/client";
+import { asText, Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
 /**
@@ -11,26 +11,26 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   return (
-    <section className="bg-yellow min-h-[100dvh] p-10">
+    <section className="bg-yellow min-h-[200dvh] p-10">
       <div className=" space-y-10">
         <h1 className="text-4xl text-green font-extrabold items-center justify-center gap-4 flex">
-          Lo de Sarita
+          {asText(slice.primary.titulo)}
         </h1>
 
         <div className="flex gap-8 items-center">
           <h2 className="text-2xl text-verde font-text font-bold text-center uppercase">
-            Branding Bold
+            {asText(slice.primary.parrafo)}
           </h2>
           <p className="text-verde font-text font-bold">
-            ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 1234567890
+            {asText(slice.primary.parrafo)}
           </p>
         </div>
         <div className="flex gap-8 items-center">
           <h2 className="text-2xl text-green font-text text-center uppercase">
-            Branding Bold
+            {asText(slice.primary.parrafo)}
           </h2>
           <p className="text-green font-text">
-            ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghijklmnñopqrstuvwxyz 1234567890
+            {asText(slice.primary.parrafo)}
           </p>
         </div>
       </div>
