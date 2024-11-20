@@ -11,7 +11,7 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   return (
-    <section className="bg-yellow min-h-[200dvh] p-10">
+    <section className="bg-yellow min-h-dvh p-10">
       <div className=" space-y-10">
         <h1 className="text-4xl text-green font-extrabold items-center justify-center gap-4 flex">
           {asText(slice.primary.titulo)}
