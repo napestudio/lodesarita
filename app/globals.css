@@ -2,22 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  /* width: 100vw;
-  height: 100vh; */
-}
+@layer base {
+  :root {
+    /* If you want to add more variables here, you should also add them to tailwind.config.ts. */
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: black;
-  margin: 0;
-}
+    --green: #082d1e;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+    --yellow: #ebb572;
+
+    --orange: #de6536;
+
+    --bluelight: #78a8cf;
+
   }
+
+  /* @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #000;
+      --foreground: #fff;
+      --muted: #333;
+    }
+  } */
+
+  html {
+    /* cursor: none; */
+    font-size: 16px;
+    @apply antialiased;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: clamp(16px, calc(16px + (2 * ((100vw - 1024px) / 656))), 18px);
+    }
+  }
+
+  @media (min-width: 1680px) {
+    html {
+      font-size: clamp(18px, calc(18px + (6 * ((100vw - 1680px) / 880))), 24px);
+    }
+  }
+
+  @media (min-width: 2560px) {
+    html {
+      font-size: calc(1.5rem + 0.5vw);
+    }
+  }
+
+
+}
+
+@layer components {
+  .container {
+    @apply px-5 md:px-8 lg:px-12 xl:px-16 2xl:px-24;
+  }
+
+}
+
+/* Lenis */
+/* https://github.com/studio-freight/lenis?tab=readme-ov-file#recommended-css */
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
