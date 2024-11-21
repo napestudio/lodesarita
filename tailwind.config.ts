@@ -6,39 +6,37 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],  
+  ],
   theme: {
-    extend: {
-      screens: {
-        "3xl": "1680px",
-        "4xl": "1920px",
-        "5xl": "2560px",
+    screens: {
+      "3xl": "1680px",
+      "4xl": "1920px",
+      "5xl": "2560px",
+    },
+    fontFamily: {
+      sans: ["var(--font-primary)", ...defaultTheme.fontFamily.sans],
+      text: ["var(--font-secondary)", ...defaultTheme.fontFamily.sans],
+    },
+    colors: {
+      green: {
+        DEFAULT: "var(--green)",
+        dark: "var(--green-dark)",
+        light: "var(--green-light)",
       },
-      fontFamily: {
-        sans: ["var(--font-primary)", ...defaultTheme.fontFamily.sans],
-        text: ["var(--font-secondary)", ...defaultTheme.fontFamily.sans],
+      yellow: {
+        DEFAULT: "var(--yellow)",
+        dark: "var(--yellow-dark)",
+        light: "var(--yellow-light)",
       },
-      colors: {
-        green: {
-          DEFAULT: "var(--green)",
-          dark: "var(--green-dark)",
-          light: "var(--green-light)",
-        },
-        yellow: {
-          DEFAULT: "var(--yellow)",
-          dark: "var(--yellow-dark)",
-          light: "var(--yellow-light)",
-        },
-        orange: {
-          DEFAULT: "var(--orange)",
-          dark: "var(--orange-dark)",
-          light: "var(--orange-light)",
-        },
-        bluelight: {
-          DEFAULT: "var(--bluelight)",
-          dark: "var(--bluelight-dark)",
-          light: "var(--bluelight-light)",
-        },
+      orange: {
+        DEFAULT: "var(--orange)",
+        dark: "var(--orange-dark)",
+        light: "var(--orange-light)",
+      },
+      bluelight: {
+        DEFAULT: "var(--bluelight)",
+        dark: "var(--bluelight-dark)",
+        light: "var(--bluelight-light)",
       },
     },
   },
