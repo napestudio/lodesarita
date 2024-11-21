@@ -14,11 +14,11 @@ export default async function Page() {
   return (
     <main className="bg-yellow text-center">
       <TransitionLink
-          href="/ejem"
-          className="text-green underline underline-offset-4"
-        >
-          ejem
-        </TransitionLink>
+        href="/ejem"
+        className="text-green underline underline-offset-4"
+      >
+        ejem
+      </TransitionLink>
       <SliceZone slices={page.data.slices} components={components} />
     </main>
   );

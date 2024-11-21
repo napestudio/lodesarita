@@ -18,6 +18,8 @@ const config: Config = {
       text: ["var(--font-secondary)", ...defaultTheme.fontFamily.sans],
     },
     colors: {
+      white: "var(--white)",
+      black: "var(--black)",
       green: {
         DEFAULT: "var(--green)",
         dark: "var(--green-dark)",
