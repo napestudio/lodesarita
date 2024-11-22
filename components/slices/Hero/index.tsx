@@ -1,5 +1,15 @@
-import { asText, Content } from "@prismicio/client";
+"use client";
+import {
+  asText,
+  Content,
+  ImageField,
+  ImageFieldImage,
+} from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 /**
  * Props for `Hero`.
@@ -10,37 +20,44 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
-  return (
-    <section className="bg-yellow min-h-dvh p-10">
-      <div className=" space-y-10">
-        <h1 className="text-4xl text-green font-extrabold items-center justify-center gap-4 flex">
-          {asText(slice.primary.titulo)}
-        </h1>
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const mediaRef = useRef<ImageField>(null);
 
-        <div className="flex gap-8 items-center">
-          <h2 className="text-2xl text-verde font-text font-bold text-center uppercase">
-            {asText(slice.primary.parrafo)}
-          </h2>
-          <p className="text-verde font-text font-bold">
-            {asText(slice.primary.parrafo)}
-          </p>
-        </div>
-        <div className="flex gap-8 items-center">
-          <h2 className="text-2xl text-green font-text text-center uppercase">
-            {asText(slice.primary.parrafo)}
-          </h2>
-          <p className="text-green font-text">
-            {asText(slice.primary.parrafo)}
-          </p>
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const scrollTl = gsap.timeline({ paused: true }).to(wrapperRef.current, {
+        xPercent: -25,
+        scale: 0.5,
+        ease: "linear",
+      });
+
+      ScrollTrigger.create({
+        start: "20 top",
+        end: "bottom center",
+        markers: true,
+        animation: scrollTl,
+        scrub: true,
+        pin: heroRef.current,
+      });
+    });
+
+    return () => {
+      ctx.kill();
+    };
+  }, []);
+  return (
+    <header ref={heroRef}>
+      <div className="w-full h-dvh p-6">
+        <div className="w-full h-full transition-transform" ref={wrapperRef}>
+          <PrismicNextImage
+            field={slice.primary.imagen}
+            className="object-cover w-full h-full object-center rounded-xl overflow-hidden"
+          />
         </div>
       </div>
-      <div className="flex gap-4 justify-center">
-        <div className="bg-green h-20 w-20 rounded-full"></div>
-        <div className="bg-yellow h-20 w-20 rounded-full border-4 border-green"></div>
-        <div className="bg-orange h-20 w-20 rounded-full"></div>
-        <div className="bg-bluelight h-20 w-20 rounded-full"></div>
-      </div>
-    </section>
+      <div className="h-screen"></div>
+    </header>
   );
 };
 

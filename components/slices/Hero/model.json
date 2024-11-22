@@ -21,15 +21,6 @@
             "multi": "heading1,strong,em"
           }
         },
-        "parrafo": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Parrafo",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,strong,em"
-          }
-        },
         "imagen": {
           "type": "Image",
           "config": {
@@ -38,13 +29,40 @@
             "thumbnails": []
           }
         },
-        "video": {
-          "type": "Link",
+        "videos": {
+          "type": "Group",
           "config": {
-            "label": "Video",
-            "placeholder": "",
-            "select": "media",
-            "allowText": true
+            "label": "Videos",
+            "repeat": true,
+            "fields": {
+              "video": {
+                "type": "Link",
+                "config": {
+                  "label": "Video",
+                  "placeholder": "",
+                  "select": "media",
+                  "allowText": true
+                }
+              }
+            }
+          }
+        },
+        "parrafos": {
+          "type": "Group",
+          "config": {
+            "label": "Parrafos",
+            "repeat": true,
+            "fields": {
+              "parrafo": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Parrafo",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink"
+                }
+              }
+            }
           }
         }
       },

@@ -12,13 +12,13 @@ export default async function Page() {
   const page = await client.getSingle("home");
 
   return (
-    <main className="bg-yellow text-center">
-      <TransitionLink
+    <main className="bg-black">
+      {/* <TransitionLink
         href="/ejem"
         className="text-green underline underline-offset-4"
       >
         ejem
-      </TransitionLink>
+      </TransitionLink> */}
       <SliceZone slices={page.data.slices} components={components} />
     </main>
   );
