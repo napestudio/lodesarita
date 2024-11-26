@@ -48,7 +48,7 @@ export default function NavBar() {
           delay: 4,
         })
         .to(innerRef.current, {
-          width: 400,
+          width: 400, // CAMBIAR EL ANCHO USANDO FLIP PARA USAR EL MAX CONTENT
         })
         .to("[data-nav] div", {
           y: 0,
