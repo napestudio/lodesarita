@@ -1,0 +1,32 @@
+.step1 [data-video] {
+  grid-column-end: 10;
+  grid-column-start: 1;
+  /* grid-row-end: 7; */
+  width: 100%;
+}
+
+.step1 [data-video-small] {
+  grid-column-start: 10;
+  grid-column-end: 13;
+  grid-row-start: 5;
+  grid-row-end: 7;
+  width: 100%;
+}
+
+.step1 [data-text] {
+  grid-row-start: 3;
+  grid-column-end: 13;
+  width: 100%;
+  opacity: 1;
+}
+
+.step2 [data-text] {
+  grid-row-start: 1;
+}
+.step2 [data-video] {
+  grid-row-end: 7;
+}
+
+.step2 [data-video-small] {
+  grid-row-start: 4;
+}

@@ -12,7 +12,7 @@ export default async function Page() {
   const page = await client.getSingle("home");
 
   return (
-    <main className="bg-black">
+    <div>
       {/* <TransitionLink
         href="/ejem"
         className="text-green underline underline-offset-4"
@@ -20,7 +20,8 @@ export default async function Page() {
         ejem
       </TransitionLink> */}
       <SliceZone slices={page.data.slices} components={components} />
-    </main>
+      <div className="h-screen"></div>
+    </div>
   );
 }
 
