@@ -41,22 +41,23 @@ export default function NavBar() {
       });
       const navState = Flip.getState(innerRef.current);
 
-      const tl = gsap.timeline().to(innerRef.current, {
-        yPercent: 0,
-        delay: 4,
-      });
+      const tl = gsap
+        .timeline()
+        .to(innerRef.current, {
+          yPercent: 0,
+          delay: 4,
+        })
+        .to(innerRef.current, {
+          width: 400,
+        })
+        .to("[data-nav] div", {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.5,
+        });
 
       tl.play();
-      // .to(
-      //   "[data-nav] div",
-      //   {
-      //     y: 0,
-      //     opacity: 1,
-      //     stagger: 0.1,
-      //     duration: 1,
-      //   },
-      //   "<"
-      // );
 
       const showNav = gsap
         .from(ref.current, {
@@ -92,7 +93,10 @@ export default function NavBar() {
           data-nav
         >
           {menuItems.map((menuItem) => (
-            <div key={menuItem.index} className="font-text font-bold opacity-0">
+            <div
+              key={menuItem.index}
+              className="font-text font-bold opacity-0 -translate-y-8"
+            >
               <a href={menuItem.href}>{menuItem.label}</a>
             </div>
           ))}
