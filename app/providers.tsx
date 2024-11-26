@@ -12,8 +12,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <TransitionRouter
       auto={true}
       leave={(next, from, to) => {
-        console.log({ from, to });
-
         const tl = gsap
           .timeline({
             onComplete: next,
@@ -25,7 +23,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
               y: 0,
               duration: 0.5,
               ease: "circ.inOut",
-            },
+            }
           )
           .fromTo(
             secondLayer.current,
@@ -37,7 +35,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
               duration: 0.5,
               ease: "circ.inOut",
             },
-            "<50%",
+            "<50%"
           );
 
         return () => {
@@ -54,7 +52,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
               y: "-100%",
               duration: 0.5,
               ease: "circ.inOut",
-            },
+            }
           )
           .fromTo(
             firstLayer.current,
@@ -64,7 +62,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
               duration: 0.5,
               ease: "circ.inOut",
             },
-            "<50%",
+            "<50%"
           )
           .call(next, undefined, "<50%");
 

@@ -26,18 +26,6 @@
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
-			"video": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "FileLink",
-					"id": "mock_Media_link",
-					"kind": "file",
-					"name": "mock_name",
-					"url": "https://source.unsplash.com/daily",
-					"size": "0",
-					"text": "giving"
-				}
-			},
 			"titulo": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -49,14 +37,52 @@
 					}
 				]
 			},
-			"parrafo": {
-				"__TYPE__": "StructuredTextContent",
+			"videos": {
+				"__TYPE__": "GroupContentType",
 				"value": [
 					{
-						"type": "paragraph",
-						"content": {
-							"text": "Reprehenderit elit nisi aliqua ad adipisicing ut laborum non do cillum mollit commodo adipisicing nulla. Reprehenderit dolore amet non. Eiusmod et nulla nisi quis pariatur et nisi veniam dolore magna."
-						}
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"video",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "FileLink",
+										"id": "mock_Media_link",
+										"kind": "file",
+										"name": "mock_name",
+										"url": "https://source.unsplash.com/daily",
+										"size": "0",
+										"text": "deep"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"parrafos": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"parrafo",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Labore consectetur ipsum Lorem sunt aliquip non est ut dolor. Amet eu cillum sint adipisicing dolore aliquip elit irure consectetur ullamco Lorem aute anim."
+											}
+										}
+									]
+								}
+							]
+						]
 					}
 				]
 			}

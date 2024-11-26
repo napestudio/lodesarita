@@ -147,6 +147,36 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomeDocument | RoomDocument | SettingsDocument;
 
 /**
+ * Item in *Hero → Default → Primary → Videos*
+ */
+export interface HeroSliceDefaultPrimaryVideosItem {
+  /**
+   * Video field in *Hero → Default → Primary → Videos*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.videos[].video
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkToMediaField;
+}
+
+/**
+ * Item in *Hero → Default → Primary → Parrafos*
+ */
+export interface HeroSliceDefaultPrimaryParrafosItem {
+  /**
+   * Parrafo field in *Hero → Default → Primary → Parrafos*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.parrafos[].parrafo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  parrafo: prismic.RichTextField;
+}
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -161,16 +191,6 @@ export interface HeroSliceDefaultPrimary {
   titulo: prismic.RichTextField;
 
   /**
-   * Parrafo field in *Hero → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.parrafo
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  parrafo: prismic.RichTextField;
-
-  /**
    * Imagen field in *Hero → Default → Primary*
    *
    * - **Field Type**: Image
@@ -181,14 +201,24 @@ export interface HeroSliceDefaultPrimary {
   imagen: prismic.ImageField<never>;
 
   /**
-   * Video field in *Hero → Default → Primary*
+   * Videos field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Link to Media
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.video
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **API ID Path**: hero.default.primary.videos[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  video: prismic.LinkToMediaField;
+  videos: prismic.GroupField<Simplify<HeroSliceDefaultPrimaryVideosItem>>;
+
+  /**
+   * Parrafos field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.parrafos[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  parrafos: prismic.GroupField<Simplify<HeroSliceDefaultPrimaryParrafosItem>>;
 }
 
 /**
@@ -425,6 +455,8 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       AllDocumentTypes,
       HeroSlice,
+      HeroSliceDefaultPrimaryVideosItem,
+      HeroSliceDefaultPrimaryParrafosItem,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,

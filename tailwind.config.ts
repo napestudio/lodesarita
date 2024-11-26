@@ -7,12 +7,10 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  experimental: {
+    optimizeUniversalDefaults: true,
+  },
   theme: {
-    screens: {
-      "3xl": "1680px",
-      "4xl": "1920px",
-      "5xl": "2560px",
-    },
     fontFamily: {
       sans: ["var(--font-primary)", ...defaultTheme.fontFamily.sans],
       text: ["var(--font-secondary)", ...defaultTheme.fontFamily.sans],
@@ -39,6 +37,13 @@ const config: Config = {
         DEFAULT: "var(--bluelight)",
         dark: "var(--bluelight-dark)",
         light: "var(--bluelight-light)",
+      },
+    },
+    extend: {
+      screens: {
+        "3xl": "1680px",
+        "4xl": "1920px",
+        "5xl": "2560px",
       },
     },
   },
