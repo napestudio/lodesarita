@@ -1,14 +1,8 @@
 "use client";
-import {
-  asText,
-  Content,
-  ImageField,
-  ImageFieldImage,
-  LinkField,
-} from "@prismicio/client";
+import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { useEffect, useRef, useState } from "react";
+import { SliceComponentProps } from "@prismicio/react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Flip } from "gsap/Flip";
@@ -29,7 +23,6 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   const video2WrapperRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const [scrollY, setScrollY] = useState(0); // To store scroll position
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -41,7 +34,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       ScrollTrigger.create({
         trigger: heroRef.current,
         start: "top top",
-        end: "bottom 50%+=100px",
+        end: "bottom bottom",
         // markers: true,
         pin: true,
         onEnter: () => {
@@ -129,7 +122,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 
   return (
     <header ref={heroRef} className="w-dvw max-w-full bg-green">
-      <div className="w-full h-dvh p-6 grid grid-cols-12 grid-rows-6 gap-4">
+      <div className="w-full h-dvh p-2 grid grid-cols-12 grid-rows-6 gap-2">
         <div
           className="w-full h-full rounded-xl overflow-hidden col-start-1 col-end-12 row-start-1 row-end-5"
           ref={videoWrapperRef}
@@ -160,7 +153,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="px-2 text-yellow w-full row-start-5 row-end-6 col-start-1 col-end-10">
+        <div className="px-2 text-yellow w-full row-start-5 col-start-1 col-end-10 ">
           <div
             className="text-3xl leading-none text-left flex flex-col"
             data-paragraph-big
