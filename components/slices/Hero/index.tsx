@@ -13,8 +13,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Flip } from "gsap/Flip";
 import "./hero.css";
-import Image from "next/image";
-import { splitText } from "@/lib/split-text";
 
 gsap.registerPlugin(Flip);
 
