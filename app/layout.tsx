@@ -16,7 +16,7 @@ import { repositoryName } from "@/prismicio";
 import { PrismicPreview } from "@prismicio/next";
 import type { Metadata } from "next";
 import { Providers } from "./providers";
-import NavBar from "@/components/navbar";
+import NavBar from "@/components/navbar/navbar";
 
 export const metadata: Metadata = {
   title: {

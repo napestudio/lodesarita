@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Flip } from "gsap/Flip";
+import "./animation.css";
 gsap.registerPlugin(Flip);
 
 const menuItems = [
@@ -31,31 +32,38 @@ const menuItems = [
 export default function NavBar() {
   const ref = useRef(null);
   const innerRef = useRef<HTMLDivElement>(null);
+  const navElRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set(innerRef.current, {
-        width: 50,
         yPercent: -200,
         opacity: 1,
       });
-      const navState = Flip.getState(innerRef.current);
 
-      const tl = gsap
-        .timeline()
-        .to(innerRef.current, {
-          yPercent: 0,
-          delay: 4,
-        })
-        .to(innerRef.current, {
-          width: 400, // CAMBIAR EL ANCHO USANDO FLIP PARA USAR EL MAX CONTENT
-        })
-        .to("[data-nav] div", {
-          y: 0,
-          opacity: 1,
-          stagger: 0.1,
-          duration: 0.5,
-        });
+      const tl = gsap.timeline().to(innerRef.current, {
+        yPercent: 0,
+        delay: 4,
+        onComplete: () => {
+          const innerState = Flip.getState(innerRef.current);
+          const navState = Flip.getState(navElRef.current);
+          innerRef.current?.classList.add("step-1");
+          const newInnerState = Flip.getState(innerRef.current);
+          const newNavState = Flip.getState(navElRef.current);
+          Flip.from(newInnerState, {
+            duration: 3,
+          });
+          Flip.from(newNavState, {
+            duration: 3,
+          });
+          gsap.to("[data-nav] div", {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: -0.1,
+          });
+        },
+      });
 
       tl.play();
 
@@ -85,11 +93,12 @@ export default function NavBar() {
   return (
     <div className="fixed w-full top-2 p-2 z-50" ref={ref}>
       <div
-        className="bg-white rounded-full px-3 mx-auto shadow-md opacity-0"
+        className="bg-white rounded-full px-3 mx-auto shadow-md opacity-0 w-max"
         ref={innerRef}
       >
         <nav
-          className="flex gap-3 text-base place-content-center px-3 py-2 overflow-hidden"
+          className="flex gap-3 text-base 2xl:text-xl place-content-center px-3 py-2 overflow-hidden w-min"
+          ref={navElRef}
           data-nav
         >
           {menuItems.map((menuItem) => (

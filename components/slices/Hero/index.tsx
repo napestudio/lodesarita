@@ -202,10 +202,10 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         >
           <PrismicNextImage
             field={slice.primary.imagen}
-            className="invert opacity-0"
+            className="opacity-0 "
             data-logo
           />
-          <div className="px-2 text-yellow w-full">
+          <div className="px-2 text-white w-full flex justify-between">
             <div
               className="text-lg leading-none text-left opacity-0 flex flex-col"
               data-paragraph
