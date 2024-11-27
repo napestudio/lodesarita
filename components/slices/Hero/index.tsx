@@ -2,7 +2,7 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Flip } from "gsap/Flip";
@@ -19,36 +19,27 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
+  const [loaded, setLoaded] = useState(false);
+
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const video2WrapperRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const state = Flip.getState(heroRef.current);
-      const videoState = Flip.getState(videoWrapperRef.current);
-      const videoSmallState = Flip.getState(video2WrapperRef.current);
-      const textRefState = Flip.getState(textRef.current);
+    if (!loaded) return;
+    const state = Flip.getState(heroRef.current);
+    const videoState = Flip.getState(videoWrapperRef.current);
+    const videoSmallState = Flip.getState(video2WrapperRef.current);
+    const textRefState = Flip.getState(textRef.current);
 
-      ScrollTrigger.create({
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        // markers: true,
-        pin: true,
-        onEnter: () => {
+    const tl = gsap
+      .timeline({ paused: true })
+      .to("[data-logo]", {
+        opacity: 1,
+        duration: 1,
+        onComplete: () => {
           heroRef.current?.classList.add("step1");
-          gsap.to("[data-logo]", {
-            opacity: 1,
-            duration: 1,
-          });
-          gsap.to("[data-paragraph-big] [data-line]", {
-            y: 0,
-            stagger: 0.2,
-            duration: 1,
-            ease: "power1.inOut",
-          });
           Flip.from(state, {
             duration: 1,
             ease: "power1.inOut",
@@ -64,7 +55,6 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             ease: "power1.inOut",
             absolute: true,
           });
-
           Flip.from(textRefState, {
             duration: 1,
             ease: "power1.inOut",
@@ -113,18 +103,29 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             },
           });
         },
+      })
+      .to("[data-paragraph-big] [data-line]", {
+        y: 0,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power1.inOut",
       });
-    });
-    return () => {
-      ctx.kill();
-    };
+
+    tl.play();
+  }, [loaded]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <header ref={heroRef} className="w-dvw max-w-full bg-green">
-      <div className="w-full h-dvh p-4 grid grid-cols-12 grid-rows-6 gap-4">
+    <header ref={heroRef} className="w-dvw max-w-full bg-green" data-hero>
+      <div className="w-full h-dvh p-6 grid grid-cols-12 grid-rows-6 gap-6">
         <div
-          className="w-full h-full rounded-xl overflow-hidden col-start-1 col-end-12 row-start-1 row-end-5"
+          className="w-full h-full rounded-3xl overflow-hidden col-start-1 col-end-12 row-start-1 row-end-5"
           ref={videoWrapperRef}
           data-video
         >
@@ -139,7 +140,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           />
         </div>
         <div
-          className="w-full rounded-xl overflow-hidden col-start-1 col-end-9 row-start-5 row-span-2"
+          className="w-full rounded-3xl overflow-hidden col-start-1 col-end-9 row-start-5 row-span-2"
           ref={video2WrapperRef}
           data-video-small
         >
