@@ -122,7 +122,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 
   return (
     <header ref={heroRef} className="w-dvw max-w-full bg-green">
-      <div className="w-full h-dvh p-2 grid grid-cols-12 grid-rows-6 gap-2">
+      <div className="w-full h-dvh p-4 grid grid-cols-12 grid-rows-6 gap-4">
         <div
           className="w-full h-full rounded-xl overflow-hidden col-start-1 col-end-12 row-start-1 row-end-5"
           ref={videoWrapperRef}
