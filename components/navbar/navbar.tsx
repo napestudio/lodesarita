@@ -2,9 +2,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { Flip } from "gsap/Flip";
-import "./animation.css";
-gsap.registerPlugin(Flip);
 
 const menuItems = [
   {
@@ -33,37 +30,34 @@ export default function NavBar() {
   const ref = useRef(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const navElRef = useRef<HTMLDivElement>(null);
+  const ulRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set(innerRef.current, {
         yPercent: -200,
+        scaleX: 0.5,
+
         opacity: 1,
       });
 
-      const tl = gsap.timeline().to(innerRef.current, {
-        yPercent: 0,
-        delay: 4,
-        onComplete: () => {
-          const innerState = Flip.getState(innerRef.current);
-          const navState = Flip.getState(navElRef.current);
-          innerRef.current?.classList.add("step-1");
-          const newInnerState = Flip.getState(innerRef.current);
-          const newNavState = Flip.getState(navElRef.current);
-          Flip.from(newInnerState, {
-            duration: 3,
-          });
-          Flip.from(newNavState, {
-            duration: 3,
-          });
-          gsap.to("[data-nav] div", {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            stagger: -0.1,
-          });
-        },
-      });
+      const tl = gsap
+        .timeline()
+        .to(innerRef.current, {
+          yPercent: 0,
+          opacity: 1,
+          delay: 4,
+        })
+        .to(innerRef.current, {
+          scaleX: 1,
+          backgroundColor: "white",
+        })
+        .to("[data-nav] ul li", {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: -0.1,
+        });
 
       tl.play();
 
@@ -91,24 +85,30 @@ export default function NavBar() {
   }, []);
 
   return (
-    <div className="fixed w-full top-2 p-2 z-50" ref={ref}>
+    <div className="fixed w-full py-6 z-50 " ref={ref}>
       <div
-        className="bg-white rounded-full px-3 mx-auto shadow-md opacity-0 w-max"
+        className="rounded-full px-2 mx-auto opacity-0 w-max scale-x-100"
         ref={innerRef}
       >
-        <nav
-          className="flex gap-3 text-base 2xl:text-xl place-content-center px-3 py-2 overflow-hidden w-min"
-          ref={navElRef}
-          data-nav
-        >
-          {menuItems.map((menuItem) => (
-            <div
-              key={menuItem.index}
-              className="font-text font-bold opacity-0 -translate-y-8"
-            >
-              <a href={menuItem.href}>{menuItem.label}</a>
-            </div>
-          ))}
+        <nav className="py-2" ref={navElRef} data-nav>
+          <ul
+            className="flex list-none overflow-hidden text-base 2xl:text-xl items-center justify-center"
+            ref={ulRef}
+          >
+            {menuItems.map((menuItem) => (
+              <li
+                key={menuItem.index}
+                className="font-text font-bold opacity-0 -translate-y-8 leading-none align-middle"
+              >
+                <a
+                  className="hover:bg-yellow hover:text-green transition-colors py-2 px-4 rounded-full inline-block"
+                  href={menuItem.href}
+                >
+                  {menuItem.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </nav>
       </div>
     </div>
