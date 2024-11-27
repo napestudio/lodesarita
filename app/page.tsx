@@ -20,7 +20,6 @@ export default async function Page() {
         ejem
       </TransitionLink> */}
       <SliceZone slices={page.data.slices} components={components} />
-      <div className="h-screen"></div>
     </div>
   );
 }

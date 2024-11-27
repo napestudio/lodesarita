@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = RoomsSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice = GallerySlice | RoomsSlice | HeroSlice;
 
 /**
  * Content for Home documents
@@ -145,6 +145,88 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = HomeDocument | RoomDocument | SettingsDocument;
+
+/**
+ * Item in *Gallery → Default → Primary → Imagenes*
+ */
+export interface GallerySliceDefaultPrimaryImagenesItem {
+  /**
+   * Imagen field in *Gallery → Default → Primary → Imagenes*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.imagenes[].imagen
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagen: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Gallery → Default → Primary*
+ */
+export interface GallerySliceDefaultPrimary {
+  /**
+   * Titulo field in *Gallery → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Parrafo field in *Gallery → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.parrafo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  parrafo: prismic.RichTextField;
+
+  /**
+   * Imagenes field in *Gallery → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.imagenes[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  imagenes: prismic.GroupField<
+    Simplify<GallerySliceDefaultPrimaryImagenesItem>
+  >;
+}
+
+/**
+ * Default variation for Gallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GallerySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Gallery*
+ */
+type GallerySliceVariation = GallerySliceDefault;
+
+/**
+ * Gallery Shared Slice
+ *
+ * - **API ID**: `gallery`
+ * - **Description**: Gallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySlice = prismic.SharedSlice<
+  "gallery",
+  GallerySliceVariation
+>;
 
 /**
  * Item in *Hero → Default → Primary → Videos*
@@ -454,6 +536,11 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       AllDocumentTypes,
+      GallerySlice,
+      GallerySliceDefaultPrimaryImagenesItem,
+      GallerySliceDefaultPrimary,
+      GallerySliceVariation,
+      GallerySliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryVideosItem,
       HeroSliceDefaultPrimaryParrafosItem,
