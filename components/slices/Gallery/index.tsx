@@ -1,5 +1,5 @@
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 /**
  * Props for `Gallery`.
@@ -16,7 +16,13 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="h-dvh bg-black"
     >
-      <h1>Galeria</h1>
+      <h2>
+        {slice.primary.title ? (
+          <PrismicRichText field={slice.primary.title} />
+        ) : (
+          "Galeria"
+        )}
+      </h2>
     </section>
   );
 };
