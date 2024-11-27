@@ -14,7 +14,7 @@
 }
 
 .step1 [data-text] {
-  grid-row-start: 3;
+  grid-row-start: 2;
   grid-column-end: 13;
   width: 100%;
   opacity: 1;

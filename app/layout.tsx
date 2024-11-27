@@ -16,6 +16,7 @@ import { repositoryName } from "@/prismicio";
 import { PrismicPreview } from "@prismicio/next";
 import type { Metadata } from "next";
 import { Providers } from "./providers";
+import NavBar from "@/components/navbar/navbar";
 
 export const metadata: Metadata = {
   title: {
@@ -39,6 +40,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <Client />
+          <NavBar />
           {children}
           {(IS_PROD || ENABLE_PRISMIC_PREVIEW) && (
             <PrismicPreview repositoryName={repositoryName} />
