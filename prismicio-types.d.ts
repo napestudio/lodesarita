@@ -529,6 +529,16 @@ export interface VideoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   url: prismic.KeyTextField;
+
+  /**
+   * urlYoutube field in *Video → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.default.primary.urlyoutube
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  urlyoutube: prismic.KeyTextField;
 }
 
 /**
