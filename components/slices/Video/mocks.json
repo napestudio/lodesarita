@@ -12,6 +12,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "mile",
 				"type": "Text"
+			},
+			"urlyoutube": {
+				"__TYPE__": "FieldContent",
+				"value": "wonderful",
+				"type": "Text"
 			}
 		},
 		"items": []
