@@ -49,7 +49,6 @@ const Video = ({ slice }: VideoProps): JSX.Element => {
         });
       }
     });
-    console.log(slice.primary.video);
     return () => ctx.revert();
   }, [isSmallScreen]);
 
