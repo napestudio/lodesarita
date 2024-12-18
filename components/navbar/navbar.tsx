@@ -37,7 +37,6 @@ export default function NavBar() {
       gsap.set(innerRef.current, {
         yPercent: -200,
         scaleX: 0.5,
-
         opacity: 1,
       });
 
@@ -46,7 +45,7 @@ export default function NavBar() {
         .to(innerRef.current, {
           yPercent: 0,
           opacity: 1,
-          delay: 4,
+          delay: 5,
         })
         .to(innerRef.current, {
           scaleX: 1,
@@ -85,7 +84,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <div className="fixed w-full py-6 z-50 " ref={ref}>
+    <div className="fixed w-dvw py-8 z-50 bottom-10 md:top-0" ref={ref}>
       <div
         className="rounded-full px-2 mx-auto opacity-0 w-max scale-x-100"
         ref={innerRef}
