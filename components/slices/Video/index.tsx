@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { gsap } from "gsap";
 import { useMediaQuery } from "@mantine/hooks";
 import Image from "next/image";
-
+import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * Props for `Video`.
@@ -49,7 +49,7 @@ const Video = ({ slice }: VideoProps): JSX.Element => {
         });
       }
     });
-
+    console.log(slice.primary.video);
     return () => ctx.revert();
   }, [isSmallScreen]);
 
@@ -57,18 +57,32 @@ const Video = ({ slice }: VideoProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="py-10 overflow-hidden bg-green"
     >
-      <div className="overflow-hidden relative w-full h-full" ref={videoRef}>
+      <div
+        className="overflow-hidden relative w-full h-full cursor-pointer mx-auto max-w-[90vw] rounded-3xl"
+        ref={videoRef}
+      >
         <div
           className="sm:hidden w-full h-full flex items-center justify-center absolute inset-0"
           onClick={() => setOpenModal(true)}
-        >
-          
-        </div>
+        ></div>
         {"url" in slice.primary && (
+          <PrismicNextImage
+            //  @ts-ignore
+            src={slice.primary.url!}
+            width={1920}
+            height={1080}
+            className="object-cover h-full w-full"
+            onClick={() => setOpenModal(true)}
+            data-cursor-image
+          />
+        )}
+        {"video" in slice.primary && (
           <video
             className={`inset object-cover h-full w-full`}
-            src={slice.primary.url!}
+            //  @ts-ignore
+            src={slice.primary.video.url}
             autoPlay
             playsInline
             muted
@@ -78,7 +92,11 @@ const Video = ({ slice }: VideoProps): JSX.Element => {
           />
         )}
       </div>
-      <VideoModal action={handleModal} open={openModal} />
+      <VideoModal
+        action={handleModal}
+        open={openModal}
+        ytUrl={slice.primary.urlyoutube!}
+      />
     </section>
   );
 };

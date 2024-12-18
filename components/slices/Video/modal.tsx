@@ -6,9 +6,10 @@ import { useGlobal } from "@/lib/store";
 type props = {
   open: boolean;
   action: () => void;
+  ytUrl: string;
 };
 
-export default function VideoModal({ open, action }: props) {
+export default function VideoModal({ open, action, ytUrl }: props) {
   const scroller = useGlobal((s) => s.scroller);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -33,11 +34,11 @@ export default function VideoModal({ open, action }: props) {
   return (
     <dialog
       open={isOpen}
-      className="fixed inset-0 h-screen w-screen bg-black backdrop-blur-sm z-10"
+      className="fixed inset-0 h-screen w-screen bg-[#ffe4c400] backdrop-blur-sm z-10"
     >
       <div className="flex items-center flex-col justify-center h-full w-full">
         <div className="sm:w-1/2 w-11/12 flex flex-col">
-          <div className="bg-black/75  p-2 sm:p-4 rounded-xl relative">
+          <div className="bg-green p-2 sm:p-4 rounded-xl relative">
             <button
               onClick={action}
               className="absolute top-6 right-6 bg-black p-2 z-10 rounded-full w-9 h-9 grid place-content-center opacity-30 hover:opacity-100"
@@ -59,8 +60,8 @@ export default function VideoModal({ open, action }: props) {
               </svg>
             </button>
             <iframe
-              className="aspect-video w-full"
-              src="https://www.youtube-nocookie.com/embed/N1BM0VCwJP0?si=rn13fu_-Wl1nNXkQ"
+              className="aspect-video w-full rounded-md"
+              src={ytUrl}
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

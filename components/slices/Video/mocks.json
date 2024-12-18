@@ -17,6 +17,18 @@
 				"__TYPE__": "FieldContent",
 				"value": "wonderful",
 				"type": "Text"
+			},
+			"video": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "call"
+				}
 			}
 		},
 		"items": []
