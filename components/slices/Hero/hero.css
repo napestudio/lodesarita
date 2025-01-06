@@ -22,6 +22,8 @@
 
 .step2 [data-text] {
   grid-row-start: 1;
+  grid-row-end: 4;
+  place-content: center;
 }
 .step2 [data-video] {
   grid-row-end: 7;
