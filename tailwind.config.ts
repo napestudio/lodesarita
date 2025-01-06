@@ -10,9 +10,6 @@ const config: Config = {
   experimental: {
     optimizeUniversalDefaults: true,
   },
-  corePlugins: {
-    backgroundOpacity: false,
-  },
   theme: {
     fontFamily: {
       sans: ["var(--font-primary)", ...defaultTheme.fontFamily.sans],
