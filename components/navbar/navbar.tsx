@@ -84,7 +84,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <div className="fixed w-dvw py-8 z-50 bottom-10 md:top-0" ref={ref}>
+    <div className="fixed w-dvw py-8 z-50 bottom-10 md:top-0 h-max" ref={ref}>
       <div
         className="rounded-full px-2 mx-auto opacity-0 w-max scale-x-100"
         ref={innerRef}

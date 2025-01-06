@@ -11,6 +11,8 @@
 
     --green: #082d1e;
 
+    --green-dark: #0a1c12;
+
     --yellow: #ebb572;
 
     --orange: #de6536;
@@ -53,7 +55,7 @@
 
 @layer components {
   .container {
-    @apply px-5 md:px-8 lg:px-12 xl:px-16 2xl:px-24;
+    @apply px-5 md:px-8 lg:px-12 xl:px-64 2xl:px-96;
   }
 }
 

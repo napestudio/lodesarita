@@ -47,6 +47,9 @@ const config: Config = {
       },
     },
   },
+  corePlugins: {
+    container: false,
+  },
   plugins: [],
 };
 export default config;
