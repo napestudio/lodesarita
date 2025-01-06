@@ -18,6 +18,7 @@ const config: Config = {
     colors: {
       white: "var(--white)",
       black: "var(--black)",
+      muted: "var(--muted)",
       green: {
         DEFAULT: "var(--green)",
         dark: "var(--green-dark)",
