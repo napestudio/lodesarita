@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Flip } from "gsap/Flip";
 import "./hero.css";
+import Link from "next/link";
 
 gsap.registerPlugin(Flip);
 
@@ -28,96 +29,100 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 
   useEffect(() => {
     if (!loaded) return;
-    const state = Flip.getState(heroRef.current);
-    const videoState = Flip.getState(videoWrapperRef.current);
-    const videoSmallState = Flip.getState(video2WrapperRef.current);
-    const textRefState = Flip.getState(textRef.current);
+    const ctx = gsap.context(() => {
+      const state = Flip.getState(heroRef.current);
+      const videoState = Flip.getState(videoWrapperRef.current);
+      const videoSmallState = Flip.getState(video2WrapperRef.current);
+      const textRefState = Flip.getState(textRef.current);
 
-    const tl = gsap
-      .timeline({ paused: true })
-      .to("[data-logo]", {
-        opacity: 1,
-        duration: 1,
-        onComplete: () => {
-          heroRef.current?.classList.add("step1");
-          Flip.from(state, {
-            duration: 1,
-            ease: "power1.inOut",
-            absolute: true,
-          });
-          Flip.from(videoState, {
-            duration: 1,
-            ease: "power1.inOut",
-            absolute: true,
-          });
-          Flip.from(videoSmallState, {
-            duration: 1,
-            ease: "power1.inOut",
-            absolute: true,
-          });
-          Flip.from(textRefState, {
-            duration: 1,
-            ease: "power1.inOut",
-            absolute: true,
-            onComplete: () => {
-              const textRefState = Flip.getState(textRef.current);
-              const videoState = Flip.getState(videoWrapperRef.current);
-              const videoSmallState = Flip.getState(video2WrapperRef.current);
-              heroRef.current?.classList.add("step2");
-              gsap.to("[data-paragraph-big] [data-line]", {
-                y: 150,
-                stagger: 0.15,
-                duration: 0.5,
-                ease: "power1.inOut",
-                delay: 1,
-              });
-              Flip.from(textRefState, {
-                delay: 2,
-                duration: 1,
-                ease: "power1.inOut",
-                absolute: true,
-              });
-              Flip.from(videoState, {
-                duration: 1,
-                ease: "power1.inOut",
-                absolute: true,
-                delay: 1.5,
-              });
-              Flip.from(videoSmallState, {
-                duration: 1,
-                ease: "power1.inOut",
-                absolute: true,
-                delay: 2,
-              });
-              gsap.to("[data-paragraph]", {
-                opacity: 1,
-                delay: 2,
-              });
-              gsap.to("[data-paragraph] [data-line]", {
-                y: 0,
-                stagger: 0.2,
-                duration: 1,
-                ease: "power1.inOut",
-                delay: 1,
-              });
-            },
-          });
-        },
-      })
-      .to("[data-paragraph-big] [data-line]", {
-        y: 0,
-        stagger: 0.2,
-        duration: 1,
-        ease: "power1.inOut",
-      });
+      const tl = gsap
+        .timeline({ paused: true })
+        .to("[data-logo]", {
+          opacity: 1,
+          duration: 1,
+          onComplete: () => {
+            heroRef.current?.classList.add("step1");
+            Flip.from(state, {
+              duration: 1,
+              ease: "power1.inOut",
+              // absolute: true,
+            });
+            Flip.from(videoState, {
+              duration: 1,
+              ease: "power1.inOut",
+              // absolute: true,
+            });
+            Flip.from(videoSmallState, {
+              duration: 1,
+              ease: "power1.inOut",
+              // absolute: true,
+            });
+            Flip.from(textRefState, {
+              duration: 1,
+              ease: "power1.inOut",
+              // absolute: true,
+              onComplete: () => {
+                const textRefState = Flip.getState(textRef.current);
+                const videoState = Flip.getState(videoWrapperRef.current);
+                const videoSmallState = Flip.getState(video2WrapperRef.current);
+                heroRef.current?.classList.add("step2");
+                gsap.to("[data-paragraph-big] [data-line]", {
+                  y: 150,
+                  stagger: 0.15,
+                  duration: 0.5,
+                  ease: "power1.inOut",
+                  delay: 1,
+                });
+                Flip.from(textRefState, {
+                  delay: 2,
+                  duration: 1,
+                  ease: "power1.inOut",
+                  // absolute: true,
+                });
+                Flip.from(videoState, {
+                  duration: 1,
+                  ease: "power1.inOut",
+                  // absolute: true,
+                  delay: 1.5,
+                });
+                Flip.from(videoSmallState, {
+                  duration: 1,
+                  ease: "power1.inOut",
+                  // absolute: true,
+                  delay: 2,
+                });
+                gsap.to("[data-paragraph]", {
+                  opacity: 1,
+                  delay: 2,
+                });
+                gsap.to("[data-paragraph] [data-line]", {
+                  y: 0,
+                  stagger: 0.2,
+                  duration: 1,
+                  ease: "power1.inOut",
+                  delay: 1,
+                });
+              },
+            });
+          },
+        })
+        .to("[data-paragraph-big] [data-line]", {
+          y: 0,
+          stagger: 0.2,
+          duration: 1,
+          ease: "power1.inOut",
+        });
 
-    tl.play();
+      tl.play();
+    }, [heroRef.current]);
+
+    return () => ctx.revert();
   }, [loaded]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoaded(true);
-    }, 1000);
+    }, 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -154,7 +159,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="px-2 text-yellow w-full row-start-5 col-start-1 col-end-10 ">
+        <div className="px-2 text-yellow w-full row-start-5 col-start-1 col-end-10">
           <div
             className="text-3xl 2xl:text-5xl leading-none text-left flex flex-col"
             data-paragraph-big
@@ -197,55 +202,33 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           </div>
         </div>
         <div
-          className="p-5 col-start-10 col-end-13 w-full text-yellow"
+          className="col-start-10 col-end-13 w-full text-yellow flex flex-col justify-between"
           ref={textRef}
           data-text
         >
           <PrismicNextImage
             field={slice.primary.imagen}
-            className="opacity-0 "
+            className="opacity-0 w-5/6 mx-auto"
             data-logo
           />
-          <div className="px-2 text-white w-full flex justify-between">
+          <div className="text-white w-full pt-2">
             <div
-              className="text-lg 2xl:text-3xl leading-none text-left opacity-0 flex flex-col"
+              className="opacity-0 flex flex-col gap-5 justify-between"
               data-paragraph
             >
-              <span className="overflow-hidden">
-                <span data-line className="inline-block translate-y-56">
-                  Vení
-                </span>
-              </span>
-              <span className="overflow-hidden">
-                <span data-line className="inline-block translate-y-56">
-                  a nuestras
-                </span>
-              </span>
-              <span className="overflow-hidden">
-                <span data-line className="inline-block translate-y-56">
-                  Playas
-                </span>
-              </span>
-            </div>
-            <div
-              className="text-lg 2xl:text-3xl text-right leading-none opacity-0 flex flex-col"
-              data-paragraph
-            >
-              <span className="overflow-hidden">
-                <span data-line className="inline-block translate-y-56">
-                  Vení
-                </span>
-              </span>
-              <span className="overflow-hidden">
-                <span data-line className="inline-block translate-y-56">
-                  a nuestros
-                </span>
-              </span>
-              <span className="overflow-hidden">
-                <span data-line className="inline-block translate-y-56">
-                  Bosques
-                </span>
-              </span>
+              {/* create call to action button */}
+              <Link
+                href="#help"
+                className="w-full text-center py-2 bg-green-dark rounded-xl relative font-text font-bold text-yellow"
+              >
+                Habitaciones
+              </Link>
+              <a
+                href="#"
+                className="w-full text-center py-3 bg-yellow rounded-xl relative font-text font-bold text-green-dark"
+              >
+                Reservar
+              </a>
             </div>
           </div>
         </div>
