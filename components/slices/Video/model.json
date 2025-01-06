@@ -19,18 +19,28 @@
             "placeholder": ""
           }
         },
-        "url": {
-          "type": "Text",
-          "config": {
-            "label": "url",
-            "placeholder": ""
-          }
-        },
         "urlyoutube": {
           "type": "Text",
           "config": {
             "label": "urlYoutube",
             "placeholder": ""
+          }
+        },
+        "video": {
+          "type": "Link",
+          "config": {
+            "label": "video",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },
