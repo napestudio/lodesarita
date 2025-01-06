@@ -525,16 +525,6 @@ export interface VideoSliceDefaultPrimary {
   title: prismic.KeyTextField;
 
   /**
-   * url field in *Video → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: video.default.primary.url
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  url: prismic.KeyTextField;
-
-  /**
    * urlYoutube field in *Video → Default → Primary*
    *
    * - **Field Type**: Text
@@ -553,6 +543,16 @@ export interface VideoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   video: prismic.LinkToMediaField;
+
+  /**
+   * image field in *Video → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
 }
 
 /**

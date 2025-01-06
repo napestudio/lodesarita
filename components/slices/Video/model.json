@@ -19,13 +19,6 @@
             "placeholder": ""
           }
         },
-        "url": {
-          "type": "Text",
-          "config": {
-            "label": "url",
-            "placeholder": ""
-          }
-        },
         "urlyoutube": {
           "type": "Text",
           "config": {
@@ -40,6 +33,14 @@
             "placeholder": "",
             "select": "media",
             "allowText": true
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },

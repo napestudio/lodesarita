@@ -66,12 +66,11 @@ const Video = ({ slice }: VideoProps): JSX.Element => {
           className="sm:hidden w-full h-full flex items-center justify-center absolute inset-0"
           onClick={() => setOpenModal(true)}
         ></div>
-        {"url" in slice.primary && (
+        {"image" in slice.primary && (
           <PrismicNextImage
-            //  @ts-ignore
-            src={slice.primary.url!}
-            width={1920}
-            height={1080}
+            field={slice.primary.image}
+            width={slice.primary.image.dimensions?.width}
+            height={slice.primary.image.dimensions?.height}
             className="object-cover h-full w-full"
             onClick={() => setOpenModal(true)}
             data-cursor-image
