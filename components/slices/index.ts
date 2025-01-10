@@ -7,6 +7,5 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   room: dynamic(() => import("./Room")),
   rooms: dynamic(() => import("./Rooms")),
-  text_block: dynamic(() => import("./TextBlock")),
   video: dynamic(() => import("./Video")),
 };
