@@ -1,5 +1,6 @@
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 /**
  * Props for `TextBlock`.
@@ -15,7 +16,15 @@ const TextBlock = ({ slice }: TextBlockProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for text_block (variation: {slice.variation}) Slices
+      <div className="p-10 overflow-hidden text-balance">
+        <h2>{slice.primary.title}</h2>
+        <PrismicRichText field={slice.primary.description} />
+        <PrismicNextImage
+          field={slice.primary.image}
+          height={slice.primary.image.dimensions?.height}
+          width={slice.primary.image.dimensions?.width}
+        />
+      </div>
     </section>
   );
 };
