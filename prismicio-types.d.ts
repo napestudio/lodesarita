@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | FooterSlice
   | TextBlockSlice
   | VideoSlice
   | GallerySlice
@@ -70,7 +71,7 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-type RoomDocumentDataSlicesSlice = RoomSlice;
+type RoomDocumentDataSlicesSlice = FooterSlice | RoomSlice;
 
 /**
  * Content for Room documents
@@ -150,6 +151,58 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = HomeDocument | RoomDocument | SettingsDocument;
+
+/**
+ * Primary content in *Footer → Default → Primary*
+ */
+export interface FooterSliceDefaultPrimary {
+  /**
+   * logo field in *Footer → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.default.primary.logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * label field in *Footer → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.default.primary.label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Footer Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FooterSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FooterSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Footer*
+ */
+type FooterSliceVariation = FooterSliceDefault;
+
+/**
+ * Footer Shared Slice
+ *
+ * - **API ID**: `footer`
+ * - **Description**: Footer
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FooterSlice = prismic.SharedSlice<"footer", FooterSliceVariation>;
 
 /**
  * Item in *Gallery → Default → Primary → Imagenes*
@@ -678,6 +731,10 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       AllDocumentTypes,
+      FooterSlice,
+      FooterSliceDefaultPrimary,
+      FooterSliceVariation,
+      FooterSliceDefault,
       GallerySlice,
       GallerySliceDefaultPrimaryImagenesItem,
       GallerySliceDefaultPrimary,
