@@ -17,9 +17,6 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "footer": {
-              "type": "SharedSlice"
-            },
             "room": {
               "type": "SharedSlice"
             }
