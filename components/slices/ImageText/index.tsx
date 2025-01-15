@@ -17,14 +17,14 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <div className="container">
-        <div className="py-20 flex gap-5">
-          <div className="w-1/2 flex flex-col items-start justify-center gap-5">
+        <div className="py-20 grid md:grid-cols-2 gap-5">
+          <div className="flex flex-col items-start justify-center gap-5">
             <h2 className="text-2xl">{slice.primary.title}</h2>
             <p className="font-text font-semibold text-balance">
               {slice.primary.description}
             </p>
           </div>
-          <div className="w-1/2">
+          <div className="">
             <PrismicNextImage
               className="h-full w-full object-cover rounded-xl"
               field={slice.primary.image}

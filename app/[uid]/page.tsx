@@ -2,19 +2,18 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SliceZone } from "@prismicio/react";
 
-import { createClient } from "@/prismicio";
+import { cms, createClient } from "@/prismicio";
 import { components } from "@/components/slices";
 
 type Params = { uid: string };
 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
-  const client = createClient();
-  const page = await client.getByUID("room", uid).catch(() => notFound());
-
+  const room = await cms.getByUID("room", uid).catch(() => notFound());
+  
   return (
     <div>
-      <SliceZone slices={page.data.slices} components={components} />
+      <SliceZone slices={room.data.slices} components={components} />
     </div>
   );
 }
