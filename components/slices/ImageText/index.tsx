@@ -24,7 +24,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
               {slice.primary.description}
             </p>
           </div>
-          <div className="">
+          <div>
             <PrismicNextImage
               className="h-full w-full object-cover rounded-xl"
               field={slice.primary.image}
