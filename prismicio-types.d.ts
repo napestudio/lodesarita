@@ -466,6 +466,16 @@ export interface RoomSliceDefaultPrimaryCaracteristicasItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   caracteristica: prismic.KeyTextField;
+
+  /**
+   * icon field in *Room → Default → Primary → Caracteristicas*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: room.default.primary.caracteristicas[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
 }
 
 /**

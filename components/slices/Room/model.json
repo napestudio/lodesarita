@@ -38,6 +38,17 @@
                   "label": "Caracteristica",
                   "placeholder": ""
                 }
+              },
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "icon",
+                  "constraint": {
+                    "width": 45,
+                    "height": 45
+                  },
+                  "thumbnails": []
+                }
               }
             }
           }
