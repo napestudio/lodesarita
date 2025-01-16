@@ -9,7 +9,7 @@ type Params = { uid: string };
 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
-  const room = await cms.getByUID("room", uid).catch(() => notFound());
+  const room = await cms.getByUID("room", uid);
   
   return (
     <div>
