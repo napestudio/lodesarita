@@ -7,7 +7,7 @@ const menuItems = [
   {
     index: 1,
     label: "Inicio",
-    href: "#",
+    href: "/",
   },
   {
     index: 2,

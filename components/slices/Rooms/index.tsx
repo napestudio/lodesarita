@@ -2,6 +2,8 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { cms } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+
+import { Link as TransitionLink } from "next-transition-router";
 /**
  * Props for `Rooms`.
  */
@@ -21,7 +23,7 @@ export default async function Rooms({ slice }: RoomsProps) {
         {/* Card */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {rooms.map((room) => (
-            <PrismicNextLink
+            <TransitionLink
               href={`${room.uid}`}
               key={room.id}
               className="rounded-xl overflow-hidden border border-muted"
@@ -48,7 +50,7 @@ export default async function Rooms({ slice }: RoomsProps) {
                   </div>
                 </div>
               </div>
-            </PrismicNextLink>
+            </TransitionLink>
           ))}
         </div>
       </div>
