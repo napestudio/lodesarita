@@ -24,7 +24,7 @@ const Room = ({ slice }: RoomProps): JSX.Element => {
           height={slice.primary.miniatura.dimensions?.height}
         />
       </div>
-      <div className="container py-10 space-y-4">
+      <div className="container py-10">
         <div className="grid md:grid-cols-12 gap-4">
           <div className="md:col-span-8 space-y-4">
             <h2 className="text-4xl text-green">{slice.primary.titulo}</h2>
@@ -38,7 +38,6 @@ const Room = ({ slice }: RoomProps): JSX.Element => {
               {slice.primary.caracteristicas.map((item, index) => (
                 <div key={index} className="flex items-center space-x-2">
                   <PrismicNextImage
-                    className="rounded-xl"
                     field={item.icon}
                     width={item.icon.dimensions?.width}
                     height={item.icon.dimensions?.height}
@@ -51,7 +50,7 @@ const Room = ({ slice }: RoomProps): JSX.Element => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-4 ">
+        <div className="grid grid-cols-3 gap-4 mt-10">
           {slice.primary.fotos.map((item, index) => (
             <div key={index} className="">
               <PrismicNextImage
