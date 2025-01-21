@@ -4,6 +4,7 @@ import { cms } from "@/prismicio";
 import { PrismicNextImage } from "@prismicio/next";
 
 import { Link as TransitionLink } from "next-transition-router";
+
 /**
  * Props for `Rooms`.
  */
