@@ -27,7 +27,7 @@ export default async function Rooms({ slice }: RoomsProps) {
             <TransitionLink
               href={`${room.uid}`}
               key={room.id}
-              className="rounded-xl overflow-hidden border border-muted"
+              className="rounded-xl overflow-hidden border border-muted bg-white"
             >
               <div className="aspect-[4/3]">
                 <PrismicNextImage
@@ -35,21 +35,36 @@ export default async function Rooms({ slice }: RoomsProps) {
                   field={room.data.slices[0].primary.miniatura}
                 />
               </div>
-              <div className="flex justify-between items-start p-4">
-                <div>
-                  <h3 className="text-2xl font-bold mb-2">
-                    {room.data.slices[0].primary.titulo}
-                  </h3>
-                  <p className="text-muted-foreground font-text font-semibold">
-                    {room.data.slices[0].primary.descripcion}
-                  </p>
-                </div>
-                <div className="">
-                  <div className="text-3xl font-text font-bold">$200</div>
-                  <div className="text-sm text-muted-foreground font-text font-semibold">
-                    por noche
+              <div className="flex flex-col justify-between md:min-h-[12rem]">
+                <div className="flex justify-between gap-4 items-start p-4">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">
+                      {room.data.slices[0].primary.titulo}
+                    </h3>
+                    <p className="text-muted-foreground font-text font-semibold line-clamp-3">
+                      {room.data.slices[0].primary.descripcion}
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <div className="text-3xl font-text font-bold leading-[1]">$200</div>
+                    <div className="text-sm text-muted-foreground font-text font-semibold leading-[1]">
+                      por noche
+                    </div>
                   </div>
                 </div>
+                <ul className="p-3 flex justify-start gap-2">
+                  {room.data.slices[0].primary.caracteristicas.map(
+                    (item: any | null, index: number) => (
+                      <li key={index} className="flex items-center w-4">
+                        <PrismicNextImage
+                          field={item.icon}
+                          width={item.icon.dimensions?.width}
+                          height={item.icon.dimensions?.height}
+                        />
+                      </li>
+                    )
+                  )}
+                </ul>
               </div>
             </TransitionLink>
           ))}
