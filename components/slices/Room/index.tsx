@@ -28,15 +28,15 @@ const Room = ({ slice }: RoomProps): JSX.Element => {
         <div className="grid md:grid-cols-12 gap-4">
           <div className="md:col-span-8 space-y-4">
             <h2 className="text-4xl text-green">{slice.primary.titulo}</h2>
-            <p className="font-text font-normal">
+            <p className="text-2xl font-text font-bold text-balance">
               {slice.primary.descripcion}
             </p>
           </div>
           <div className="md:col-span-4 space-y-4">
-            <div className="space-y-2">
+            <div className="space-y-3">
               <h3 className="font-semibold text-green text-3xl">Características</h3>
               {slice.primary.caracteristicas.map((item, index) => (
-                <div key={index} className="flex items-center space-x-2">
+                <div key={index} className="flex items-center space-x-3">
                   <PrismicNextImage
                     field={item.icon}
                     width={item.icon.dimensions?.width}

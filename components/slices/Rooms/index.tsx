@@ -36,7 +36,7 @@ export default async function Rooms({ slice }: RoomsProps) {
               </div>
               <div className="flex justify-between gap-4 items-start p-4">
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">
+                  <h3 className="text-2xl font-text font-bold mb-2">
                     {room.data.slices[0].primary.titulo}
                   </h3>
                   <ul className="mb-3 flex justify-start gap-2">
@@ -52,11 +52,11 @@ export default async function Rooms({ slice }: RoomsProps) {
                       )
                     )}
                   </ul>
-                  <p className="text-muted-foreground font-text font-semibold line-clamp-3">
+                  <p className="text-muted-foreground font-text font-semibold text-sm text-pretty line-clamp-7">
                     {room.data.slices[0].primary.descripcion}
                   </p>
                 </div>
-                <div className="flex flex-col items-end">
+                <div className="hidden flex-col items-end">
                   <div className="text-3xl font-text font-bold leading-[1]">
                     $200
                   </div>
