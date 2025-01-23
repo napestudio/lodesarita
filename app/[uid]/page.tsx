@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SliceZone } from "@prismicio/react";
 
-import { cms, createClient } from "@/prismicio";
+import { cms } from "@/prismicio";
 import { components } from "@/components/slices";
 
 type Params = { uid: string };
@@ -24,8 +24,7 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { uid } = await params;
-  const client = createClient();
-  const page = await client.getByUID("room", uid).catch(() => notFound());
+  const page = await cms.getByUID("room", uid);
 
   return {
     title: page.data.meta_title,
@@ -34,8 +33,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const client = createClient();
-  const pages = await client.getAllByType("room");
+  const pages = await cms.getAllByType("room");
 
   return pages.map((page) => {
     return { uid: page.uid };
