@@ -5,20 +5,12 @@ import { createClient } from "@/prismicio";
 import { components } from "@/components/slices";
 import { SITE_DESCRPTION, SITE_NAME } from "@/lib/constants";
 
-import { Link as TransitionLink } from "next-transition-router";
-
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle("home");
 
   return (
     <div>
-      {/* <TransitionLink
-        href="/ejem"
-        className="text-green underline underline-offset-4"
-      >
-        ejem
-      </TransitionLink> */}
       <SliceZone slices={page.data.slices} components={components} />
     </div>
   );

@@ -1,0 +1,35 @@
+{
+  "format": "custom",
+  "id": "caracteristica",
+  "label": "Caracteristica",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "icono": {
+        "type": "Image",
+        "config": {
+          "label": "Icono",
+          "constraint": {
+            "width": 45,
+            "height": 45
+          },
+          "thumbnails": []
+        }
+      },
+      "label": {
+        "type": "Text",
+        "config": {
+          "label": "Label",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

@@ -13,21 +13,20 @@
   width: 100%;
 }
 
-.step1 [data-text] {
-  grid-row-start: 2;
+.step1 [data-logo-area] {
+  grid-row-start: 3;
+  grid-row-end: 5;
   grid-column-end: 13;
-  width: 100%;
-  opacity: 1;
 }
 
-.step2 [data-text] {
+.step2 [data-logo-area] {
   grid-row-start: 1;
   grid-row-end: 4;
-  place-content: center;
+  /* place-content: center; */
 }
-.step2 [data-video] {
+/* .step2 [data-video] {
   grid-row-end: 7;
-}
+} */
 
 .step2 [data-video-small] {
   grid-row-start: 4;

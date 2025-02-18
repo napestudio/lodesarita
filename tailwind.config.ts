@@ -39,6 +39,7 @@ const config: Config = {
         dark: "var(--bluelight-dark)",
         light: "var(--bluelight-light)",
       },
+      transparent: "transparent",
     },
     extend: {
       screens: {

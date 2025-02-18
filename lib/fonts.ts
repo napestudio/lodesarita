@@ -9,7 +9,7 @@ const primaryFont = localFont({
       path: "../assets/fonts/Gilton-Bold.woff2",
       weight: "700",
       style: "bold",
-    }
+    },
   ],
 });
 
@@ -24,10 +24,20 @@ const secondaryFont = localFont({
       style: "bold",
     },
     {
-      path: "../assets/fonts/BrandingLight.woff2",
+      path: "../assets/fonts/BrandingSemibold.woff2",
+      weight: "600",
+      style: "semibold",
+    },
+    {
+      path: "../assets/fonts/BrandingMedium.woff2",
       weight: "400",
+      style: "medium",
+    },
+    {
+      path: "../assets/fonts/BrandingLight.woff2",
+      weight: "200",
       style: "light",
-    }
+    },
   ],
 });
 
