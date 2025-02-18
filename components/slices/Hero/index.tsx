@@ -34,72 +34,56 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       const videoSmallState = Flip.getState(video2WrapperRef.current);
       const textRefState = Flip.getState(textRef.current);
 
-      const tl = gsap
-        .timeline({ paused: true })
-        .to("[data-logo]", {
-          opacity: 1,
-          duration: 1,
-          onComplete: () => {
-            heroRef.current?.classList.add("step1");
-            Flip.from(state, {
-              duration: 1,
-              ease: "power1.inOut",
-            });
-            Flip.from(videoState, {
-              duration: 1,
-              ease: "power1.inOut",
-            });
-            Flip.from(videoSmallState, {
-              duration: 1,
-              ease: "power1.inOut",
-            });
-            Flip.from(textRefState, {
-              duration: 1,
-              ease: "power1.inOut",
-              onComplete: () => {
-                const textRefState = Flip.getState(textRef.current);
-                const videoState = Flip.getState(videoWrapperRef.current);
-                const videoSmallState = Flip.getState(video2WrapperRef.current);
-                heroRef.current?.classList.add("step2");
-                gsap.to("[data-paragraph-big] [data-line]", {
-                  y: 150,
-                  stagger: 0.15,
-                  duration: 1,
-                  ease: "power1.inOut",
-                  delay: 1,
-                });
-                Flip.from(textRefState, {
-                  delay: 2,
-                  duration: 1,
-                  ease: "power1.inOut",
-                  // absolute: true,
-                });
-                Flip.from(videoState, {
-                  duration: 1,
-                  ease: "power1.inOut",
-                  // absolute: true,
-                  delay: 1.5,
-                });
-                Flip.from(videoSmallState, {
-                  duration: 1,
-                  ease: "power1.inOut",
-                  // absolute: true,
-                  delay: 2,
-                });
-              },
-            });
-          },
-        })
-        .to(
-          "[data-paragraph-big] [data-line]",
-          {
-            y: 0,
-            stagger: 0.2,
+      const tl = gsap.timeline({ paused: true }).to("[data-logo]", {
+        opacity: 1,
+        duration: 1,
+        onComplete: () => {
+          heroRef.current?.classList.add("step1");
+          Flip.from(state, {
             duration: 1,
             ease: "power1.inOut",
-          },
-          "0.5"
-        );
+          });
+          Flip.from(videoState, {
+            duration: 1,
+            ease: "power1.inOut",
+          });
+          Flip.from(videoSmallState, {
+            duration: 1,
+            ease: "power1.inOut",
+          });
+          Flip.from(textRefState, {
+            duration: 1,
+            ease: "power1.inOut",
+            onComplete: () => {
+              const textRefState = Flip.getState(textRef.current);
+              const videoSmallState = Flip.getState(video2WrapperRef.current);
+              heroRef.current?.classList.add("step2");
+              Flip.from(textRefState, {
+                delay: 1,
+                duration: 1,
+                ease: "power1.inOut",
+                // absolute: true,
+              }).to(
+                "[data-paragraph-big] [data-line]",
+                {
+                  y: 0,
+                  stagger: 0.2,
+                  duration: 1,
+                  ease: "power1.inOut",
+                },
+                "-1.5"
+              );
+
+              Flip.from(videoSmallState, {
+                duration: 1,
+                ease: "power1.inOut",
+                // absolute: true,
+                delay: 1,
+              });
+            },
+          });
+        },
+      });
 
       tl.play();
     }, [heroRef.current]);
