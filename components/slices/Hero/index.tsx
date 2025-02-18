@@ -131,7 +131,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="px-2 text-yellow w-full row-start-5 col-start-1 col-end-10">
+        <div className="px-2 text-yellow w-full row-start-5 col-start-1 col-end-10 flex flex-col justify-between">
           <div
             className="text-3xl 2xl:text-6xl leading-none text-left flex flex-col"
             data-paragraph-big
