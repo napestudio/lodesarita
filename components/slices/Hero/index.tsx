@@ -196,19 +196,16 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         >
           <PrismicNextImage
             field={slice.primary.imagen}
-            className=" mx-auto"
+            className="h-full mx-auto w-[90%] object-contain"
             data-logo
           />
-          <div className="text-white w-full pt-2">
-            <div className="flex flex-col gap-5 justify-between">
-              <button
-                className="w-full text-center py-3 bg-yellow rounded-xl relative font-text font-bold text-green-dark"
-                data-cta
-              >
-                Reservar
-              </button>
-            </div>
-          </div>
+
+          <button
+            className="w-full text-center py-3 bg-yellow rounded-xl relative font-text font-bold text-green-dark"
+            data-cta
+          >
+            Reservar
+          </button>
         </div>
       </div>
     </header>
