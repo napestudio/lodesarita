@@ -6,9 +6,8 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { Flip } from "gsap/Flip";
 
-gsap.registerPlugin(Flip, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Props for `Gallery`.
@@ -19,49 +18,86 @@ export type GalleryProps = SliceComponentProps<Content.GallerySlice>;
  * Initial positions for GSAP animations.
  */
 const initialPositions = [
-  { y: -800, x: -1250 },
-  { y: -800 },
-  { y: -800, x: 1200 },
-  { x: -1200 },
-  { y: 0 },
-  { x: 1200 },
-  { y: 800, x: -1200 },
-  { y: 800 },
-  { y: 800, x: 1250 },
-].map((pos) => ({ ...pos, scale: 4, zIndex: 90 }));
+  { scale: 5.2, y: -860, x: -1360 },
+  { scale: 5.3, y: -880 },
+  { scale: 5.4, y: -870, x: 1370 },
+  { scale: 5.5, x: -1350 },
+  { scale: 5.6, y: 0 },
+  { scale: 5.5, x: 1350 },
+  { scale: 5.4, y: 870, x: -1370 },
+].map((pos) => ({ ...pos, zIndex: 90 }));
+
+const initialPos = { scale: 6, y: -500, gap: 80 };
+/**
+ * Initial positions for GSAP animations.
+ */
+const initialStyles = [
+  "col-start-1 col-span-4 aspect-[9/16]",
+  "col-span-5 aspect-video mt-[3rem]",
+  "col-span-3 aspect-square mt-[3rem]",
+  "col-start-2 col-span-3 aspect-video",
+  "col-start-5 col-span-4 z-50 aspect-square -mt-[16rem]",
+  "col-start-9 col-span-4 aspect-video -mt-[16rem]",
+  "col-start-9 col-span-3 aspect-square -mt-[13.5rem]",
+];
 
 /**
  * Component for "Gallery" Slices.
  */
 const Gallery = ({ slice }: GalleryProps): JSX.Element => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     if (!loaded || !heroRef.current) return;
-  
-    const ctx = gsap.context(() => {
-      const elements = Array.from(document.querySelectorAll("[data-image-big]"));
+
+    /*const ctx = gsap.context(() => {
+      const elements = Array.from(
+        document.querySelectorAll("[data-image-big]")
+      );
       elements.forEach((el, index) => gsap.set(el, initialPositions[index]));
-  
+
       const tl = gsap.timeline({ paused: true }).to(elements, {
         y: 0,
         x: 0,
         scale: 1,
         ease: "power1.inOut",
       });
-  
+
       ScrollTrigger.create({
         trigger: heroRef.current,
-        start: "top+=50px top",
-        end: "bottom+=50px center",
+        start: "top+=30px top",
+        end: "bottom+=50px bottom-=50px",
+        animation: tl,
+        scrub: true,
+        pin: true,
+        markers: true,
+      });
+    }, heroRef);*/
+
+    const ctx = gsap.context(() => {
+      gsap.set(gridRef.current, initialPos);
+      const tl = gsap.timeline({ paused: true }).to(gridRef.current, {
+        y: 0,
+        x: 0,
+        scale: 1,
+        ease: "power1.inOut",
+        gap: 20,
+        stagger: 0.1,
+      });
+
+      ScrollTrigger.create({
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom+=500px bottom-=50px",
         animation: tl,
         scrub: true,
         pin: true,
         markers: true,
       });
     }, heroRef);
-  
+
     return () => ctx.revert();
   }, [loaded]);
 
@@ -73,19 +109,25 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
   return (
     <section ref={heroRef} className="bg-black py-16 md:py-26 overflow-hidden">
       <div className="container">
-        <div className="text-5xl text-white">
+        <div className="text-5xl text-white hidden">
           <PrismicRichText field={slice.primary.title} />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-          {slice.primary.imagenes.map((image, index) => (
-            <div key={index} className="relative" data-image-big={index}>
-              <div className="aspect-video">
-                <PrismicNextImage
-                  field={image.imagen}
-                  className="h-full w-full object-cover rounded-xl"
-                  alt=""
-                />
-              </div>
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 mt-8 square-[5.6]"
+        >
+          {slice.primary.imagenes.slice(0, 7).map((image, index) => (
+            <div
+              key={index}
+              className={`relative ${initialStyles[index]}`}
+              data-image-big={index}
+            >
+              <PrismicNextImage
+                field={image.imagen}
+                className="h-full w-full object-cover rounded-xl"
+                width={image.imagen.dimensions?.width}
+                height={image.imagen.dimensions?.height}
+              />
             </div>
           ))}
         </div>
