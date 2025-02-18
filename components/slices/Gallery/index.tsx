@@ -17,17 +17,8 @@ export type GalleryProps = SliceComponentProps<Content.GallerySlice>;
 /**
  * Initial positions for GSAP animations.
  */
-const initialPositions = [
-  { scale: 5.2, y: -860, x: -1360 },
-  { scale: 5.3, y: -880 },
-  { scale: 5.4, y: -870, x: 1370 },
-  { scale: 5.5, x: -1350 },
-  { scale: 5.6, y: 0 },
-  { scale: 5.5, x: 1350 },
-  { scale: 5.4, y: 870, x: -1370 },
-].map((pos) => ({ ...pos, zIndex: 90 }));
-
 const initialPos = { scale: 6, y: -500, gap: 80 };
+
 /**
  * Initial positions for GSAP animations.
  */
@@ -51,30 +42,6 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
 
   useEffect(() => {
     if (!loaded || !heroRef.current) return;
-
-    /*const ctx = gsap.context(() => {
-      const elements = Array.from(
-        document.querySelectorAll("[data-image-big]")
-      );
-      elements.forEach((el, index) => gsap.set(el, initialPositions[index]));
-
-      const tl = gsap.timeline({ paused: true }).to(elements, {
-        y: 0,
-        x: 0,
-        scale: 1,
-        ease: "power1.inOut",
-      });
-
-      ScrollTrigger.create({
-        trigger: heroRef.current,
-        start: "top+=30px top",
-        end: "bottom+=50px bottom-=50px",
-        animation: tl,
-        scrub: true,
-        pin: true,
-        markers: true,
-      });
-    }, heroRef);*/
 
     const ctx = gsap.context(() => {
       gsap.set(gridRef.current, initialPos);
