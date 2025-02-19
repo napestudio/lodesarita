@@ -131,9 +131,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="px-2 text-yellow w-full row-start-5 col-start-1 col-end-10 flex flex-col justify-between">
+        <div className="px-2 text-yellow w-full row-start-5 row-end-7 col-start-1 col-end-10 flex justify-between">
           <div
-            className="text-3xl 2xl:text-6xl leading-none text-left flex flex-col"
+            className="text-3xl xl:text-5xl 2xl:text-8xl leading-none text-left flex flex-col"
             data-paragraph-big
           >
             <span className="overflow-hidden">
@@ -153,7 +153,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             </span>
           </div>
           <div
-            className="text-3xl 2xl:text-5xl text-right leading-none flex flex-col"
+            className="text-3xl xl:text-5xl 2xl:text-8xl text-right leading-none flex flex-col justify-end"
             data-paragraph-big
           >
             <span className="overflow-hidden">

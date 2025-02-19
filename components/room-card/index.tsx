@@ -4,44 +4,44 @@ import { Link as TransitionLink } from "next-transition-router";
 
 export default function RoomCard({ room }: { room: PrismicDocument }) {
   return (
-    <TransitionLink
-      href={`${room.uid}`}
-      className="col-span-1 md:even:col-span-3 md:col-span-2 group"
-    >
-      <div className="rounded-xl overflow-hidden bg-white p-2 h-full">
-        <div className="relative">
+    <div key={room.id} className="group">
+      <div className="grid gap-10 items-end md:grid-cols-2">
+        <div className="group-even:order-2 group-even:pt-0 group-even:pb-8 pt-8">
           <PrismicNextImage
-            className="object-cover w-full aspect-video md:h-72 rounded-xl overflow-hidden"
+            className="object-cover shadow-md w-[30rem] md:h-[85vh] 2xl:h-[65vh] rounded-xl"
             field={room.data.slices[0].primary.miniatura}
           />
-          <div className="absolute w-full h-full inset-0 grid place-content-end justify-start p-2">
-            <ul className="flex justify-start gap-2 bg-white px-4 py-3  rounded-full">
-              {room.data.slices[0].primary.caracteristicas.map(
-                (item: any, i: number) => (
-                  <li key={i} className="flex items-center w-4">
-                    <PrismicNextImage
-                      field={item.icon}
-                      width={item.icon.dimensions?.width}
-                      height={item.icon.dimensions?.height}
-                    />
-                  </li>
-                )
-              )}
-            </ul>
-          </div>
         </div>
-        <div className="flex justify-between gap-4 items-start p-4">
-          <div>
-            <h3 className="text-3xl font-text font-bold mb-2">
+        <div className="h-full flex flex-col justify-between group-even:flex-col-reverse group-even:order-1">
+          <PrismicNextImage
+            className="object-cover shadow-md aspect-square md:w-3/5 2xl:w-3/4 mx-auto rounded-xl"
+            field={room.data.slices[0].primary.miniatura}
+          />
+          <div className="pb-10 group-even:pt-10">
+            <h3 className="text-7xl font-text font-bold text-yellow mb-2 flex gap-5 items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+                <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+                <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+              </svg>{" "}
               {room.data.slices[0].primary.titulo}
             </h3>
-
-            <p className="text-muted-foreground font-text font-medium text-base  leading-tight text-pretty">
+            <p className="font-text text-gray-900 leading-tight text-pretty">
               {room.data.slices[0].primary.descripcion}
             </p>
           </div>
         </div>
       </div>
-    </TransitionLink>
+    </div>
   );
 }
