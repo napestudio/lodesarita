@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 export default function RoomCard({ room }: { room: PrismicDocument }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -81,7 +81,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
         <div className="group-even:order-2 group-even:pt-0 group-even:pb-8 pt-8">
           <div className="relative w-max overflow-hidden rounded-xl">
             <div
-              className="absolute h-full w-full bg-white inset-0 origin-right z-10"
+              className="absolute h-full w-full bg-white inset-0 origin-right z-10 scale-y-105"
               data-mask
             ></div>
             <PrismicNextImage
@@ -92,13 +92,13 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
           </div>
         </div>
         <div className="h-full flex flex-col justify-between group-even:flex-col-reverse group-even:order-1">
-          <div className="relative overflow-hidden rounded-xl bg-black md:w-3/5 2xl:w-3/4 mx-auto">
+          <div className="relative overflow-hidden rounded-xl md:w-3/5 2xl:w-3/4 mx-auto">
             <div
-              className="absolute h-full w-full bg-white inset-0 origin-bottom z-10 "
+              className="absolute h-full w-full bg-white inset-0 origin-bottom z-10 scale-y-105"
               data-mask-small
             ></div>
             <PrismicNextImage
-              className="object-cover shadow-md aspect-square scale-105"
+              className="object-cover aspect-square scale-105"
               field={room.data.slices[0].primary.miniatura}
               data-image-small
             />

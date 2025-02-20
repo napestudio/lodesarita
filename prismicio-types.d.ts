@@ -4,6 +4,49 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Content for Caracteristica documents
+ */
+interface CaracteristicaDocumentData {
+  /**
+   * Icono field in *Caracteristica*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: caracteristica.icono
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icono: prismic.ImageField<never>;
+
+  /**
+   * Label field in *Caracteristica*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: caracteristica.label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Caracteristica document from Prismic
+ *
+ * - **API ID**: `caracteristica`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CaracteristicaDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CaracteristicaDocumentData>,
+    "caracteristica",
+    Lang
+  >;
+
 type HomeDocumentDataSlicesSlice =
   | ImageTextSlice
   | FooterSlice
@@ -150,7 +193,11 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomeDocument | RoomDocument | SettingsDocument;
+export type AllDocumentTypes =
+  | CaracteristicaDocument
+  | HomeDocument
+  | RoomDocument
+  | SettingsDocument;
 
 /**
  * Primary content in *Footer → Default → Primary*
@@ -548,6 +595,16 @@ export interface RoomSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   fotos: prismic.GroupField<Simplify<RoomSliceDefaultPrimaryFotosItem>>;
+
+  /**
+   * Miniatura Chica field in *Room → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: room.default.primary.thumbnail_small
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  thumbnail_small: prismic.ImageField<never>;
 }
 
 /**
@@ -732,6 +789,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      CaracteristicaDocument,
+      CaracteristicaDocumentData,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,

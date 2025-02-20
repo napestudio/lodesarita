@@ -4,11 +4,11 @@ import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-
 import { Flip } from "gsap/Flip";
+// import { Flip } from "gsap/Flip";
 import "./hero.css";
 
-gsap.registerPlugin(Flip);
+// gsap.registerPlugin(Flip);
 
 /**
  * Props for `Hero`.
@@ -104,7 +104,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <header ref={heroRef} className="w-dvw max-w-full bg-green" data-hero>
       <div className="w-full h-dvh p-6 grid grid-cols-12 grid-rows-6 gap-6">
         <div
-          className="w-full h-full rounded-3xl overflow-hidden col-start-1 col-end-12 row-start-1 row-end-5"
+          className="w-full h-full rounded-3xl overflow-hidden col-start-1 col-end-13 row-start-1 row-end-5"
           ref={videoWrapperRef}
           data-video
         >

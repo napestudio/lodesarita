@@ -1,15 +1,8 @@
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import { useEffect } from 'react'
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { Flip } from "gsap/Flip";
 
-// https://greensock.com/docs/v3/GSAP/gsap.registerPlugin()
+gsap.registerPlugin(ScrollTrigger, Flip);
+ScrollTrigger.clearScrollMemory("manual");
 
-export function useGsapPlugins() {
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-    ScrollTrigger.clearScrollMemory('manual')
-    // ScrollTrigger.defaults({
-    //   markers: process.env.NODE_ENV === 'development',
-    // })
-  }, [])
-}
+export function useGsapPlugins() {}

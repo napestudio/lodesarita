@@ -17,7 +17,7 @@ export default async function Rooms({ slice }: RoomsProps) {
       <div className="container">
         <Title text={"Habitaciones"} />
 
-        <div className="space-y-20">
+        <div className="space-y-32">
           {rooms.map((room) => (
             <RoomCard room={room} key={room.id} />
           ))}
