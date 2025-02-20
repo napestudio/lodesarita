@@ -40,7 +40,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <Client />
-          <NavBar />
+          {/* <NavBar /> */}
           {children}
           {(IS_PROD || ENABLE_PRISMIC_PREVIEW) && (
             <PrismicPreview repositoryName={repositoryName} />
