@@ -85,8 +85,6 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
     ));
   };
 
-  console.log(room);
-
   return (
     <div className="group" ref={cardRef}>
       <div className="grid gap-10 items-end md:grid-cols-2">
