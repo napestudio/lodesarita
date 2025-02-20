@@ -17,13 +17,17 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
     const imageSmall = cardRef.current?.querySelector("[data-image-small]");
     const maskBig = cardRef.current?.querySelector("[data-mask]");
     const maskSmall = cardRef.current?.querySelector("[data-mask-small]");
+    const descriptionEl = cardRef.current?.querySelector("[data-description]");
+    const ctaEl = cardRef.current?.querySelector("[data-cta]");
 
     if (
       !imageBig ||
       !maskBig ||
       !imageSmall ||
       !maskSmall ||
-      !cardTitleRef.current
+      !cardTitleRef.current ||
+      !descriptionEl ||
+      !ctaEl
     )
       return;
 
@@ -33,7 +37,13 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
         .to(maskBig, { scaleX: 0, duration: 1, ease: "power1.inOut" })
         .to(maskSmall, { scaleY: 0, duration: 1, ease: "power1.inOut" }, "0")
         .to(imageBig, { scale: 1, duration: 1, ease: "power1.inOut" }, "0")
-        .to(imageSmall, { scale: 1, duration: 1, ease: "power1.inOut" }, "0");
+        .to(imageSmall, { scale: 1, duration: 1, ease: "power1.inOut" }, "0")
+        .to(
+          descriptionEl,
+          { opacity: 1, duration: 1, ease: "power1.inOut" },
+          "0.5"
+        )
+        .to(ctaEl, { opacity: 1, duration: 1, ease: "power1.inOut" }, "0.8");
 
       ScrollTrigger.create({
         trigger: cardRef.current,
@@ -75,6 +85,8 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
     ));
   };
 
+  console.log(room);
+
   return (
     <div className="group" ref={cardRef}>
       <div className="grid gap-10 items-end md:grid-cols-2">
@@ -99,7 +111,8 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
             ></div>
             <PrismicNextImage
               className="object-cover aspect-square scale-105"
-              field={room.data.slices[0].primary.miniatura}
+              field={room.data.slices[0].primary.thumbnail_small}
+              alt=""
               data-image-small
             />
           </div>
@@ -128,12 +141,16 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
                 {splitText(room.data.slices[0].primary.titulo)}
               </span>
             </h3>
-            <p className="font-text text-gray-900 leading-tight text-pretty">
+            <p
+              className="font-text text-gray-900 leading-tight text-pretty opacity-0"
+              data-description
+            >
               {room.data.slices[0].primary.descripcion}
             </p>
             <TransitionLink
               href={`/${room.uid}`}
-              className="text-yellow rounded-full px-6 py-2 mt-5 bg-black w-max"
+              className="text-yellow rounded-full px-6 py-2 mt-5 bg-black w-max opacity-0"
+              data-cta
             >
               Reservar
             </TransitionLink>
