@@ -28,7 +28,6 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
       return;
 
     const ctx = gsap.context(() => {
-      // Animación de las imágenes
       const tl = gsap
         .timeline({ paused: true })
         .to(maskBig, { scaleX: 0, duration: 1, ease: "power1.inOut" })
@@ -44,8 +43,6 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
         scrub: false,
         markers: false,
       });
-
-      // Animación del título letra por letra
       const letters = gsap.utils.toArray<HTMLSpanElement>("[data-letter]");
 
       gsap.fromTo(
@@ -61,6 +58,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
             trigger: cardTitleRef.current,
             start: "top 80%",
             toggleActions: "play none none none",
+            markers: false,
           },
         }
       );

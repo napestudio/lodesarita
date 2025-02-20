@@ -25,6 +25,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   const video2WrapperRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!loaded) return;
@@ -73,12 +74,13 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                 },
                 "-1.5"
               );
-
               Flip.from(videoSmallState, {
                 duration: 1,
                 ease: "power1.inOut",
-                // absolute: true,
                 delay: 1,
+              }).to(ctaRef.current, {
+                y: 0,
+                opacity: 1,
               });
             },
           });
@@ -185,8 +187,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           />
 
           <button
-            className="w-full text-center py-3 bg-yellow rounded-xl relative font-text font-bold text-green-dark"
+            className="w-full text-center py-3 bg-yellow rounded-xl relative font-text font-bold text-green-dark opacity-0 translate-y-full"
             data-cta
+            ref={ctaRef}
           >
             Reservar
           </button>

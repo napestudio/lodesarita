@@ -28,7 +28,6 @@ export default function Title({ text }: TitleProps) {
         end: "center center",
         animation: tl,
         scrub: false,
-        markers: true,
       });
     }, [titleContainerRef.current]);
     return () => ctx.revert();
