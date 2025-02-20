@@ -44,6 +44,7 @@ export function splitText(
   splitItems.forEach((item) => {
     const span = document.createElement("span");
     span.classList.add(itemClass);
+    span.classList.add("block");
     span.textContent = item;
     items.push(span);
     container.appendChild(span);

@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Props for `Gallery`.
@@ -40,38 +40,38 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
   const gridRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    if (!loaded || !heroRef.current) return;
+  // useEffect(() => {
+  //   if (!loaded || !heroRef.current) return;
 
-    const ctx = gsap.context(() => {
-      gsap.set(gridRef.current, initialPos);
-      const tl = gsap.timeline({ paused: true }).to(gridRef.current, {
-        y: 0,
-        x: 0,
-        scale: 1,
-        ease: "power1.inOut",
-        gap: 20,
-        stagger: 0.1,
-      });
+  //   const ctx = gsap.context(() => {
+  //     gsap.set(gridRef.current, initialPos);
+  //     const tl = gsap.timeline({ paused: true }).to(gridRef.current, {
+  //       y: 0,
+  //       x: 0,
+  //       scale: 1,
+  //       ease: "power1.inOut",
+  //       gap: 20,
+  //       stagger: 0.1,
+  //     });
 
-      ScrollTrigger.create({
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom+=500px bottom-=50px",
-        animation: tl,
-        scrub: true,
-        pin: true,
-        markers: true,
-      });
-    }, heroRef);
+  //     ScrollTrigger.create({
+  //       trigger: heroRef.current,
+  //       start: "top top",
+  //       end: "bottom+=500px bottom-=50px",
+  //       animation: tl,
+  //       scrub: true,
+  //       pin: true,
+  //       markers: true,
+  //     });
+  //   }, heroRef);
 
-    return () => ctx.revert();
-  }, [loaded]);
+  //   return () => ctx.revert();
+  // }, [loaded]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 1500);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => setLoaded(true), 1500);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <section ref={heroRef} className="bg-black py-16 md:py-26 overflow-hidden">

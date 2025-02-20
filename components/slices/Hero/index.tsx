@@ -4,11 +4,11 @@ import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-
 import { Flip } from "gsap/Flip";
+// import { Flip } from "gsap/Flip";
 import "./hero.css";
 
-gsap.registerPlugin(Flip);
+// gsap.registerPlugin(Flip);
 
 /**
  * Props for `Hero`.
@@ -25,6 +25,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   const video2WrapperRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!loaded) return;
@@ -73,12 +74,13 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                 },
                 "-1.5"
               );
-
               Flip.from(videoSmallState, {
                 duration: 1,
                 ease: "power1.inOut",
-                // absolute: true,
                 delay: 1,
+              }).to(ctaRef.current, {
+                y: 0,
+                opacity: 1,
               });
             },
           });
@@ -102,7 +104,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <header ref={heroRef} className="w-dvw max-w-full bg-green" data-hero>
       <div className="w-full h-dvh p-6 grid grid-cols-12 grid-rows-6 gap-6">
         <div
-          className="w-full h-full rounded-3xl overflow-hidden col-start-1 col-end-12 row-start-1 row-end-5"
+          className="w-full h-full rounded-3xl overflow-hidden col-start-1 col-end-13 row-start-1 row-end-5"
           ref={videoWrapperRef}
           data-video
         >
@@ -185,8 +187,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           />
 
           <button
-            className="w-full text-center py-3 bg-yellow rounded-xl relative font-text font-bold text-green-dark"
+            className="w-full text-center py-3 bg-yellow rounded-xl relative font-text font-bold text-green-dark opacity-0 translate-y-full"
             data-cta
+            ref={ctaRef}
           >
             Reservar
           </button>

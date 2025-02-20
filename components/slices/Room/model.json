@@ -77,6 +77,14 @@
               }
             }
           }
+        },
+        "thumbnail_small": {
+          "type": "Image",
+          "config": {
+            "label": "Miniatura Chica",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {}
