@@ -65,7 +65,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
           >
             <PrismicNextImage
               field={image.imagen}
-              className="w-full h-full object-cover "
+              className="w-full h-full object-cover rounded-xl"
               width={image.imagen.dimensions?.width}
               height={image.imagen.dimensions?.height}
             />
