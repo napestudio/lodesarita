@@ -49,10 +49,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
     return () => ctx.revert();
   }, []);
   return (
-    <section
-      className="bg-black py-16 md:py-64 overflow-hidden"
-      ref={sectionRef}
-    >
+    <section className="py-16 md:py-64 overflow-hidden" ref={sectionRef}>
       <div
         ref={gridRef}
         className="grid grid-cols-1 md:grid-cols-2 md:grid-row-6 lg:grid-cols-12 mx-auto"
