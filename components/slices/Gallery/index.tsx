@@ -29,7 +29,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(gridRef.current, { scale: 4, gap: "0" });
+      gsap.set(gridRef.current, { scale: 4, gap: "75px" });
       const tl = gsap.timeline({ paused: true }).to(gridRef.current, {
         scale: 1,
         gap: "25px",
@@ -49,7 +49,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
     return () => ctx.revert();
   }, []);
   return (
-    <section className="py-16 md:py-64 overflow-hidden" ref={sectionRef}>
+    <section className="py-16 md:pt-32 overflow-hidden" ref={sectionRef}>
       <div
         ref={gridRef}
         className="grid grid-cols-1 md:grid-cols-2 md:grid-row-6 lg:grid-cols-12 mx-auto"
