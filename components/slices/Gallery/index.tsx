@@ -1,9 +1,9 @@
 "use client";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { cn } from "@/lib/utils";
@@ -29,7 +29,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(gridRef.current, { scale: 4, gap: "75px" });
+      gsap.set(gridRef.current, { scale: 4, gap: "175px" });
       const tl = gsap.timeline({ paused: true }).to(gridRef.current, {
         scale: 0.9,
         gap: "25px",
@@ -37,19 +37,20 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
 
       ScrollTrigger.create({
         trigger: sectionRef.current,
-        start: "center center",
+        start: "top top",
         end: "center end",
         animation: tl,
         pin: true,
         scrub: true,
-        markers: false,
+        markers: true,
       });
     }, [gridRef.current]);
 
     return () => ctx.revert();
   }, []);
+
   return (
-    <section className="py-16 md:pt-64 overflow-hidden" ref={sectionRef}>
+    <section className="py-16 md:py-32 overflow-hidden" ref={sectionRef}>
       <div
         ref={gridRef}
         className="grid grid-cols-1 md:grid-cols-2 md:grid-row-6 lg:grid-cols-12 mx-auto"
