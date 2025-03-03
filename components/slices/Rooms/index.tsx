@@ -13,11 +13,11 @@ export default async function Rooms({ slice }: RoomsProps) {
   const rooms = (await cms.getAllByType("room"))?.reverse();
 
   return (
-    <section className="py-16 md:py-24 min-h-svh grid items-center overflow-hidden">
+    <section className="py-16 md:pt-0 md:pb-24 min-h-svh grid items-center overflow-hidden">
       <div className="container">
         <Title text={"Habitaciones"} />
 
-        <div className="space-y-32">
+        <div className="space-y-1 md:space-y-32">
           {rooms.map((room) => (
             <RoomCard room={room} key={room.id} />
           ))}

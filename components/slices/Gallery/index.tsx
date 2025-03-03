@@ -17,7 +17,7 @@ const initialStyles = [
   "md:col-start-5 col-span-6 md:col-span-4 row-start-1 md:row-span-5 row-span-3",
   "col-start-7 col-end-13 md:col-start-2 md:col-end-5 md:col-span-2 row-start-5 row-end-9 md:row-start-1 md:row-end-3 md:pl-4 md:pt-4",
   "col-start-7 col-end-13 md:col-start-9 md:col-end-12 col-span-3 row-start-1 md:row-start-1 md:pt-4 row-span-3",
-  "col-start-7 col-end-13 md:col-start-9 md:col-span-3 row-start-3 md:row-start-4",
+  "col-start-1 col-end-7 md:col-start-9 md:col-span-3 row-start-5 row-end-9 md:row-end-5 md:row-start-4",
   "col-start-7 col-end-13 row-start-4 md:row-start-3 md:col-end-5 md:col-start-2 col-span-3 md:col-span-5",
   "col-start-1 md:col-start-3 col-end-7 md:col-span-2",
   "col-start-1 col-end-7 row-span-4 md:col-end-4 md:col-start-2 md:col-span-3",
