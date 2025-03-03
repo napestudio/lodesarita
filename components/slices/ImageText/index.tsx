@@ -12,15 +12,14 @@ export type ImageTextProps = SliceComponentProps<Content.ImageTextSlice>;
  */
 const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
+    <section className="py-16 md:py-24 bg-green">
       <div className="container">
         <div className="py-20 grid md:grid-cols-2 gap-5">
           <div className="flex flex-col items-start justify-center gap-5">
-            <h2 className="text-3xl">{slice.primary.title}</h2>
-            <p className="font-text font-semibold text-balance">
+            <h2 className="text-5xl md:text-7xl text-yellow">
+              {slice.primary.title}
+            </h2>
+            <p className="font-text text-xl font-medium text-balance text-white leading-6">
               {slice.primary.description}
             </p>
           </div>

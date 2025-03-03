@@ -92,7 +92,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 
   return (
     <header ref={heroRef} className="w-dvw max-w-full bg-green" data-hero>
-      <div className="w-full md:h-dvh p-6 grid grid-cols-12 grid-rows-6 gap-6">
+      <div className="w-full h-max md:h-dvh p-6 grid grid-cols-12 md:grid-rows-6 grid-rows-3 gap-6">
         <div
           className="w-full h-full rounded-3xl overflow-hidden col-start-1 col-end-13 row-start-1 row-end-5"
           ref={videoWrapperRef}
@@ -177,7 +177,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           />
 
           <button
-            className="w-full text-center py-3 bg-yellow rounded-xl relative font-text font-bold text-green-dark opacity-0 translate-y-full"
+            className="w-full text-center py-3 bg-yellow rounded-xl relative font-text font-bold text-green-dark opacity-0 translate-y-full md:mt-0 mt-2"
             data-cta
             ref={ctaRef}
           >
