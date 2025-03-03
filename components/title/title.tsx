@@ -27,7 +27,7 @@ export default function Title({ text }: TitleProps) {
         start: "-200 center",
         end: "center center",
         animation: tl,
-        scrub: false,
+        scrub: true,
       });
     }, [titleContainerRef.current]);
     return () => ctx.revert();
@@ -44,7 +44,7 @@ export default function Title({ text }: TitleProps) {
       >
         {text}
         <div
-          className="absolute bg-white w-full h-[200%] -inset-1/4 origin-right rounded-full"
+          className="absolute bg-white w-full h-[200%] -inset-1/4 origin-center rounded-full"
           data-title-mask
         ></div>
       </div>

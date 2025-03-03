@@ -1,103 +1,78 @@
 "use client";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { cn } from "@/lib/utils";
 
-// gsap.registerPlugin(ScrollTrigger);
-
-/**
- * Props for `Gallery`.
- */
 export type GalleryProps = SliceComponentProps<Content.GallerySlice>;
 
 /**
  * Initial positions for GSAP animations.
  */
-const initialPos = { scale: 6, y: -500, gap: 80 };
-
-/**
- * Initial positions for GSAP animations.
- */
 const initialStyles = [
-  "col-start-1 col-span-4 aspect-[9/16]",
-  "col-span-5 aspect-video mt-[3rem]",
-  "col-span-3 aspect-square mt-[3rem]",
-  "col-start-2 col-span-3 aspect-video",
-  "col-start-5 col-span-4 z-50 aspect-square -mt-[16rem]",
-  "col-start-9 col-span-4 aspect-video -mt-[16rem]",
-  "col-start-9 col-span-3 aspect-square -mt-[13.5rem]",
+  "md:col-start-5 col-span-6 md:col-span-4 row-start-1 md:row-span-5 row-span-3",
+  "col-start-7 col-end-13 md:col-start-2 md:col-end-5 md:col-span-2 row-start-5 row-end-9 md:row-start-1 md:row-end-3 md:pl-4 md:pt-4",
+  "col-start-7 col-end-13 md:col-start-9 md:col-end-12 col-span-3 row-start-1 md:row-start-1 md:pt-4 row-span-3",
+  "col-start-1 col-end-7 md:col-start-9 md:col-span-3 row-start-5 row-end-9 md:row-end-5 md:row-start-4",
+  "col-start-7 col-end-13 row-start-4 md:row-start-3 md:col-end-5 md:col-start-2 col-span-3 md:col-span-5",
+  "col-start-1 md:col-start-3 col-end-7 md:col-span-2",
+  "col-start-1 col-end-7 row-span-4 md:col-end-4 md:col-start-2 md:col-span-3",
 ];
 
-/**
- * Component for "Gallery" Slices.
- */
 const Gallery = ({ slice }: GalleryProps): JSX.Element => {
-  const heroRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-  const [loaded, setLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   if (!loaded || !heroRef.current) return;
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.set(gridRef.current, { scale: 1, gap: "1rem" });
 
-  //   const ctx = gsap.context(() => {
-  //     gsap.set(gridRef.current, initialPos);
-  //     const tl = gsap.timeline({ paused: true }).to(gridRef.current, {
-  //       y: 0,
-  //       x: 0,
-  //       scale: 1,
-  //       ease: "power1.inOut",
-  //       gap: 20,
-  //       stagger: 0.1,
-  //     });
+      const mm = gsap.matchMedia();
 
-  //     ScrollTrigger.create({
-  //       trigger: heroRef.current,
-  //       start: "top top",
-  //       end: "bottom+=500px bottom-=50px",
-  //       animation: tl,
-  //       scrub: true,
-  //       pin: true,
-  //       markers: true,
-  //     });
-  //   }, heroRef);
+      mm.add("(min-width: 768px)", () => {
+        gsap.set(gridRef.current, { scale: 4, gap: "5rem" });
 
-  //   return () => ctx.revert();
-  // }, [loaded]);
+        const tl = gsap.timeline({ paused: true }).to(gridRef.current, {
+          scale: 0.9,
+          gap: "1.5rem",
+          xPercent: 0,
+        });
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => setLoaded(true), 1500);
-  //   return () => clearTimeout(timer);
-  // }, []);
+        ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "center end",
+          animation: tl,
+          pin: true,
+          scrub: true,
+          markers: false,
+        });
+      });
+    }, [gridRef.current]);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={heroRef} className="bg-black py-16 md:py-26 overflow-hidden">
-      <div className="container">
-        <div className="text-5xl text-white hidden">
-          <PrismicRichText field={slice.primary.title} />
-        </div>
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 mt-8 square-[5.6]"
-        >
-          {slice.primary.imagenes.slice(0, 7).map((image, index) => (
-            <div
-              key={index}
-              className={`relative ${initialStyles[index]}`}
-              data-image-big={index}
-            >
-              <PrismicNextImage
-                field={image.imagen}
-                className="h-full w-full object-cover rounded-xl"
-                width={image.imagen.dimensions?.width}
-                height={image.imagen.dimensions?.height}
-              />
-            </div>
-          ))}
-        </div>
+    <section
+      className="py-16 md:py-0 px-5 md:px-0 overflow-hidden"
+      ref={sectionRef}
+    >
+      <div ref={gridRef} className="grid grid-cols-12">
+        {slice.primary.imagenes.slice(0, 6).map((image, index) => (
+          <div key={index} className={cn("relative", initialStyles[index])}>
+            <PrismicNextImage
+              field={image.imagen}
+              className="w-full h-full object-cover rounded-xl"
+              width={image.imagen.dimensions?.width}
+              height={image.imagen.dimensions?.height}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );
