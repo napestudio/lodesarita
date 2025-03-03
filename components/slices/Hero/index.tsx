@@ -19,8 +19,6 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
-  const [loaded, setLoaded] = useState(false);
-
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const video2WrapperRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -28,7 +26,6 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   const ctaRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!loaded) return;
     const ctx = gsap.context(() => {
       const state = Flip.getState(heroRef.current);
       const videoState = Flip.getState(videoWrapperRef.current);
@@ -91,18 +88,11 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     }, [heroRef.current]);
 
     return () => ctx.revert();
-  }, [loaded]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoaded(true);
-    }, 1500);
-    return () => clearTimeout(timer);
   }, []);
 
   return (
     <header ref={heroRef} className="w-dvw max-w-full bg-green" data-hero>
-      <div className="w-full h-dvh p-6 grid grid-cols-12 grid-rows-6 gap-6">
+      <div className="w-full md:h-dvh p-6 grid grid-cols-12 grid-rows-6 gap-6">
         <div
           className="w-full h-full rounded-3xl overflow-hidden col-start-1 col-end-13 row-start-1 row-end-5"
           ref={videoWrapperRef}
@@ -133,9 +123,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="px-2 text-yellow w-full row-start-5 row-end-7 col-start-1 col-end-10 flex justify-between">
+        <div className="flex flex-col md:flex-row px-2 text-yellow w-full md:row-start-5 md:row-end-7 col-start-1 col-end-7 md:col-end-10 justify-between">
           <div
-            className="text-3xl xl:text-5xl 2xl:text-8xl leading-none text-left flex flex-col"
+            className="text-2xl xl:text-5xl 2xl:text-8xl leading-none text-left flex flex-col"
             data-paragraph-big
           >
             <span className="overflow-hidden">
@@ -155,7 +145,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             </span>
           </div>
           <div
-            className="text-3xl xl:text-5xl 2xl:text-8xl text-right leading-none flex flex-col justify-end"
+            className="text-2xl xl:text-5xl 2xl:text-8xl text-right leading-none flex flex-col justify-end"
             data-paragraph-big
           >
             <span className="overflow-hidden">
