@@ -158,9 +158,9 @@ export default function Modal() {
     <dialog
       ref={dialogRef}
       onClose={handleDialogClose}
-      className="font-text backdrop:bg-black/50 backdrop:backdrop-blur-sm p-0 bg-transparent rounded-lg shadow-xl max-w-md w-full overflow-hidden"
+      className="font-text backdrop:bg-black/50 backdrop:backdrop-blur-sm px-3 md:px-0 bg-transparent rounded-lg shadow-xl max-w-md w-full overflow-hidden"
     >
-      <div ref={modalContentRef} className="bg-white p-6 rounded-lg">
+      <div ref={modalContentRef} className="bg-white rounded-lg">
         <div className="p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold">Reserva tu Habitación</h2>
@@ -190,7 +190,7 @@ export default function Modal() {
               <label className="block text-sm font-medium text-gray-700">
                 Tipo de Habitación
               </label>
-              <div className="space-y-2">
+              <div className="flex items-center gap-2">
                 <div className="flex items-center">
                   <input
                     type="radio"
@@ -205,7 +205,7 @@ export default function Modal() {
                     htmlFor="doble"
                     className="ml-2 block text-sm font-medium text-gray-700"
                   >
-                    Habitación Doble
+                    Doble
                   </label>
                 </div>
 
@@ -222,7 +222,7 @@ export default function Modal() {
                     htmlFor="matrimonial"
                     className="ml-2 block text-sm font-medium text-gray-700"
                   >
-                    Habitación Matrimonial
+                    Matrimonial
                   </label>
                 </div>
 
@@ -239,7 +239,7 @@ export default function Modal() {
                     htmlFor="triple"
                     className="ml-2 block text-sm font-medium text-gray-700"
                   >
-                    Habitación Triple
+                    Triple
                   </label>
                 </div>
               </div>

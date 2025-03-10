@@ -34,60 +34,75 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       const videoState = Flip.getState(videoWrapperRef.current);
       const videoSmallState = Flip.getState(video2WrapperRef.current);
       const textRefState = Flip.getState(textRef.current);
-
-      const tl = gsap.timeline({ paused: true }).to("[data-logo]", {
-        opacity: 1,
-        duration: 1,
-        onComplete: () => {
-          heroRef.current?.classList.add("step1");
-          Flip.from(state, {
-            duration: 1,
-            ease: "power1.inOut",
-          });
-          Flip.from(videoState, {
-            duration: 1,
-            ease: "power1.inOut",
-          });
-          Flip.from(videoSmallState, {
-            duration: 1,
-            ease: "power1.inOut",
-          });
-          Flip.from(textRefState, {
-            duration: 1,
-            ease: "power1.inOut",
-            onComplete: () => {
-              const textRefState = Flip.getState(textRef.current);
-              const videoSmallState = Flip.getState(video2WrapperRef.current);
-              heroRef.current?.classList.add("step2");
-              Flip.from(textRefState, {
-                delay: 1,
-                duration: 1,
-                ease: "power1.inOut",
-                // absolute: true,
-              }).to(
-                "[data-paragraph-big] [data-line]",
-                {
-                  y: 0,
-                  stagger: 0.2,
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 768px)", () => {
+        const tl = gsap.timeline({ paused: true }).to("[data-logo]", {
+          opacity: 1,
+          duration: 1,
+          onComplete: () => {
+            heroRef.current?.classList.add("step1");
+            Flip.from(state, {
+              duration: 1,
+              ease: "power1.inOut",
+            });
+            Flip.from(videoState, {
+              duration: 1,
+              ease: "power1.inOut",
+            });
+            Flip.from(videoSmallState, {
+              duration: 1,
+              ease: "power1.inOut",
+            });
+            Flip.from(textRefState, {
+              duration: 1,
+              ease: "power1.inOut",
+              onComplete: () => {
+                const textRefState = Flip.getState(textRef.current);
+                const videoSmallState = Flip.getState(video2WrapperRef.current);
+                heroRef.current?.classList.add("step2");
+                Flip.from(textRefState, {
+                  delay: 1,
                   duration: 1,
                   ease: "power1.inOut",
-                },
-                "-1.5"
-              );
-              Flip.from(videoSmallState, {
-                duration: 1,
-                ease: "power1.inOut",
-                delay: 1,
-              }).to(ctaRef.current, {
-                y: 0,
-                opacity: 1,
-              });
-            },
-          });
-        },
+                  // absolute: true,
+                }).to(
+                  "[data-paragraph-big] [data-line]",
+                  {
+                    y: 0,
+                    stagger: 0.2,
+                    duration: 1,
+                    ease: "power1.inOut",
+                  },
+                  "-1.5"
+                );
+                Flip.from(videoSmallState, {
+                  duration: 1,
+                  ease: "power1.inOut",
+                  delay: 1,
+                }).to(ctaRef.current, {
+                  y: 0,
+                  opacity: 1,
+                });
+              },
+            });
+          },
+        });
+
+        tl.play();
       });
 
-      tl.play();
+      mm.add("(max-width: 768px)", () => {
+        gsap.to(ctaRef.current, {
+          y: 0,
+          opacity: 1,
+        });
+        gsap.to("[data-paragraph-big] [data-line]", {
+          y: 0,
+          stagger: 0.2,
+          duration: 1,
+          ease: "power1.inOut",
+        });
+      });
     }, [heroRef.current]);
 
     return () => ctx.revert();
@@ -97,7 +112,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <header ref={heroRef} className="w-dvw max-w-full bg-green" data-hero>
       <div className="w-full h-max md:h-dvh p-6 grid grid-cols-12 md:grid-rows-6 grid-rows-3 gap-6">
         <div
-          className="w-full h-full rounded-3xl overflow-hidden col-start-1 col-end-13 row-start-1 row-end-5"
+          className="w-full h-full rounded-3xl overflow-hidden col-start-1 col-end-13 md:row-start-1 row-start-2 md:row-end-5"
           ref={videoWrapperRef}
           data-video
         >
@@ -112,7 +127,8 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           />
         </div>
         <div
-          className="w-full rounded-3xl overflow-hidden col-start-1 col-end-10 row-start-5 row-span-2"
+          className="w-full rounded-3xl overflow-hidden col-start-1 md:col-end-10 col-end-8 md:row-start-5 row-start-1
+           md:row-span-2"
           ref={video2WrapperRef}
           data-video-small
         >
@@ -126,7 +142,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="flex flex-col md:flex-row px-2 text-yellow w-full md:row-start-5 md:row-end-7 col-start-1 col-end-7 md:col-end-10 justify-between">
+        <div className="flex flex-col md:flex-row px-2 text-yellow w-full md:row-start-5 md:row-end-7 col-start-1 col-end-13 md:col-end-10 justify-between">
           <div
             className="text-2xl xl:text-5xl 2xl:text-8xl leading-none text-left flex flex-col"
             data-paragraph-big
@@ -169,7 +185,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           </div>
         </div>
         <div
-          className="col-start-10 col-end-13 row-end-7 row-start-5 w-full text-yellow flex flex-col justify-between overflow-hidden"
+          className="md:col-start-10 col-start-8 row-start-1 col-end-13 md:row-end-7 md:row-start-5 w-full text-yellow flex flex-col justify-between overflow-hidden"
           ref={textRef}
           data-logo-area
         >
