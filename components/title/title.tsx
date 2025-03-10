@@ -20,34 +20,34 @@ export default function Title({ text }: TitleProps) {
       if (!titleMask) return;
       const tl = gsap
         .timeline({ paused: true })
-        .to(titleMask, { scaleX: 0, duration: 1, ease: "power1.inOut" });
+        .to(titleMask, { scaleY: 0, duration: 1.5, ease: "power1.inOut" });
 
       ScrollTrigger.create({
         trigger: titleContainerRef.current,
         start: "-200 center",
         end: "center center",
         animation: tl,
-        scrub: true,
+        scrub: false,
       });
     }, [titleContainerRef.current]);
     return () => ctx.revert();
   }, []);
 
   return (
-    <div className="relative" ref={titleContainerRef}>
-      <h2 className="text-5xl md:text-9xl mb-10 leading-none text-stroke-3 text-transparent z-10 relative">
+    <div className="relative w-max" ref={titleContainerRef}>
+      <h2 className="text-5xl md:text-9xl mb-10 text-stroke-3 text-yellow z-10 relative pt-1">
         {text}
       </h2>
-      <div
-        className="absolute inset-0 text-green text-5xl md:text-9xl text-stroke-3"
+      {/* <div
+        className="absolute inset-0 text-yellow text-5xl md:text-9xl text-stroke-3 pt-1"
         data-title-background
       >
         {text}
         <div
-          className="absolute bg-white w-full h-[200%] -inset-1/4 origin-center rounded-full"
+          className="absolute bg-yellow w-full h-[200%]  origin-top"
           data-title-mask
         ></div>
-      </div>
+      </div> */}
     </div>
   );
 }

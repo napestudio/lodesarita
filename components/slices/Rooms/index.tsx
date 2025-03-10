@@ -13,7 +13,7 @@ export default async function Rooms({ slice }: RoomsProps) {
   const rooms = (await cms.getAllByType("room"))?.reverse();
 
   return (
-    <section className="py-16 md:pt-0 md:pb-24 min-h-svh grid items-center overflow-hidden">
+    <section className="py-16 md:pt-0 md:pb-24 min-h-svh grid items-center overflow-hidden bg-green">
       <div className="container">
         <Title text={"Habitaciones"} />
 

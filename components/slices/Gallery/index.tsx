@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export type GalleryProps = SliceComponentProps<Content.GallerySlice>;
 
 /**
- * Initial positions for GSAP animations.
+ * Pos inicial elementos grilla
  */
 const initialStyles = [
   "md:col-start-5 col-span-6 md:col-span-4 row-start-1 md:row-span-5 row-span-3",
@@ -45,7 +45,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
         ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top top",
-          end: "center end",
+          end: "bottom+=250",
           animation: tl,
           pin: true,
           scrub: true,
@@ -59,7 +59,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
 
   return (
     <section
-      className="py-16 md:py-0 px-5 md:px-0 overflow-hidden"
+      className="py-16 md:py-0 px-5 md:px-0 overflow-hidden bg-green"
       ref={sectionRef}
     >
       <div ref={gridRef} className="grid grid-cols-12">
