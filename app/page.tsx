@@ -10,9 +10,9 @@ export default async function Page() {
   const page = await client.getSingle("home");
 
   return (
-    <div>
+    <main>
       <SliceZone slices={page.data.slices} components={components} />
-    </div>
+    </main>
   );
 }
 

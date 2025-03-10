@@ -31,11 +31,11 @@
 
 @layer components {
   .container {
-    @apply px-5 md:px-8 lg:px-12 xl:px-48 2xl:px-[40rem];
+    @apply px-5 md:px-8 lg:px-12 xl:px-48 3xl:px-96 4xl:px-[40rem];
   }
-  .text-stroke-3 {
-    -webkit-text-stroke: 1px var(--green);
-  }
+  /* .text-stroke-3 {
+    -webkit-text-stroke: 0.5px white;
+  } */
 }
 
 /* Lenis */

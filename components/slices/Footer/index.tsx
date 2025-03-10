@@ -27,7 +27,8 @@ const Footer = ({ slice }: FooterProps): JSX.Element => {
           <h3 className="text-2xl ">Contacto</h3>
           <p className="">Tel.: 2262324027</p>
           <p className="">Mail: lodesaritahosteria@gmail.com</p>
-          <p className="">Dir.: Calle 81 #261 (entre 4 y 6), Necochea, Costa Atlántica.
+          <p className="">
+            Dir.: Calle 81 #261 (entre 4 y 6), Necochea, Costa Atlántica.
           </p>
         </div>
       </div>

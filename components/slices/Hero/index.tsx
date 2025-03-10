@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 // import { Flip } from "gsap/Flip";
 import "./hero.css";
+import { useGlobal } from "@/lib/store";
 
 // gsap.registerPlugin(Flip);
 
@@ -19,6 +20,8 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
+  const scroller = useGlobal((s) => s.scroller);
+
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const video2WrapperRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);

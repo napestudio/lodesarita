@@ -13,6 +13,16 @@ interface Store {
 
   isIndexOpen: boolean;
   setIsIndexOpen: (v: boolean) => void;
+
+  isModalOpen: boolean;
+  setIsModalOpen: (v: boolean) => void;
+
+  selectedValue: "doble" | "triple" | "matrimonial" | null;
+  setSelectedValue: (v: "doble" | "triple" | "matrimonial" | null) => void;
+
+  openModalWithSelection: (
+    initialValue?: "doble" | "triple" | "matrimonial" | null
+  ) => void;
 }
 
 export const useGlobal = create<Store>((set) => ({
@@ -27,4 +37,16 @@ export const useGlobal = create<Store>((set) => ({
 
   isIndexOpen: false,
   setIsIndexOpen: (isIndexOpen) => set({ isIndexOpen }),
+
+  isModalOpen: false,
+  setIsModalOpen: (isModalOpen) => set({ isModalOpen }),
+
+  selectedValue: null,
+  setSelectedValue: (selectedValue) => set({ selectedValue }),
+
+  openModalWithSelection: (initialValue = null) =>
+    set({
+      isModalOpen: true,
+      selectedValue: initialValue,
+    }),
 }));
