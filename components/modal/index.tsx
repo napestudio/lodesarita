@@ -205,24 +205,7 @@ export default function Modal() {
                     htmlFor="doble"
                     className="ml-2 block text-sm font-medium text-gray-700"
                   >
-                    Habitación Simple
-                  </label>
-                </div>
-
-                <div className="flex items-center">
-                  <input
-                    type="radio"
-                    id="triple"
-                    name="roomType"
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                    checked={selectedValue === "triple"}
-                    onChange={() => handleOptionSelect("triple")}
-                  />
-                  <label
-                    htmlFor="triple"
-                    className="ml-2 block text-sm font-medium text-gray-700"
-                  >
-                    Habitación Triple
+                    Habitación Doble
                   </label>
                 </div>
 
@@ -240,6 +223,23 @@ export default function Modal() {
                     className="ml-2 block text-sm font-medium text-gray-700"
                   >
                     Habitación Matrimonial
+                  </label>
+                </div>
+
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="triple"
+                    name="roomType"
+                    className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                    checked={selectedValue === "triple"}
+                    onChange={() => handleOptionSelect("triple")}
+                  />
+                  <label
+                    htmlFor="triple"
+                    className="ml-2 block text-sm font-medium text-gray-700"
+                  >
+                    Habitación Triple
                   </label>
                 </div>
               </div>
