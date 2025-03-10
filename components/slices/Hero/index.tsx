@@ -21,6 +21,7 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   const scroller = useGlobal((s) => s.scroller);
+  const { openModalWithSelection } = useGlobal();
 
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const video2WrapperRef = useRef<HTMLDivElement>(null);
@@ -196,6 +197,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           />
 
           <button
+            onClick={() => openModalWithSelection("doble")}
             className="w-full text-center py-3 bg-yellow rounded-xl relative font-text font-bold text-green-dark opacity-0 translate-y-full md:mt-0 mt-2"
             data-cta
             ref={ctaRef}
