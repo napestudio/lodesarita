@@ -7,6 +7,7 @@ export const components = {
   gallery: dynamic(() => import("./Gallery")),
   hero: dynamic(() => import("./Hero")),
   image_text: dynamic(() => import("./ImageText")),
+  map: dynamic(() => import("./Map")),
   room: dynamic(() => import("./Room")),
   rooms: dynamic(() => import("./Rooms")),
   video: dynamic(() => import("./Video")),

@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import VideoModal from "./modal";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { gsap } from "gsap";
 import { useMediaQuery } from "@mantine/hooks";
-import Image from "next/image";
 import { PrismicNextImage } from "@prismicio/next";
 
 /**
@@ -56,10 +55,10 @@ const Video = ({ slice }: VideoProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-10 overflow-hidden bg-green"
+      className="container py-10 overflow-hidden bg-green"
     >
       <div
-        className="overflow-hidden relative w-full h-full cursor-pointer mx-auto max-w-[90vw] rounded-3xl"
+        className="overflow-hidden relative w-full h-full cursor-pointer mx-auto rounded-3xl"
         ref={videoRef}
       >
         <div
