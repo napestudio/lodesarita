@@ -26,6 +26,7 @@ type FormValues = z.infer<typeof formSchema>;
 export default function Modal() {
   const { isModalOpen, setIsModalOpen, selectedValue, setSelectedValue } =
     useGlobal();
+  const scroller = useGlobal((s) => s.scroller);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const modalContentRef = useRef<HTMLDivElement>(null);
 
@@ -48,7 +49,7 @@ export default function Modal() {
   useEffect(() => {
     if (isModalOpen && dialogRef.current && !dialogRef.current.open) {
       dialogRef.current.showModal();
-
+      scroller?.stop();
       reset();
 
       if (modalContentRef.current) {
@@ -66,6 +67,7 @@ export default function Modal() {
       }
     } else if (!isModalOpen && dialogRef.current && dialogRef.current.open) {
       if (modalContentRef.current) {
+        scroller?.start();
         gsap.to(modalContentRef.current, {
           opacity: 0,
           y: -30,
