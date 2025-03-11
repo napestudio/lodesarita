@@ -21,7 +21,7 @@ export default function Map({ center, locations }: MapProps) {
   );
 
   return (
-    <div className="container h-[20rem] bg-green overflow-hidden">
+    <div className="container h-[28rem] bg-green overflow-hidden">
       <MapContainer
         center={center}
         zoom={15}
@@ -43,7 +43,6 @@ export default function Map({ center, locations }: MapProps) {
             position={{ lat: location.lat, lng: location.lng }}
           />
         ))}
-        {/* <ZoomControl position="topright" /> */}
       </MapContainer>
     </div>
   );
