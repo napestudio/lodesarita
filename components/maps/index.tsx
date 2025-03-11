@@ -15,7 +15,7 @@ export default function Map({ center, locations }: MapProps) {
     () =>
       new Icon({
         iconUrl: "map-marker.png",
-        iconSize: [37, 50],
+        iconSize: [37, 37],
       }),
     []
   );
