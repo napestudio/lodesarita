@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'leaflet/dist/leaflet.css';
+
+
 @layer base {
   :root {
     /* If you want to add more variables here, you should also add them to tailwind.config.ts. */
