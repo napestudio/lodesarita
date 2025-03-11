@@ -3,8 +3,6 @@ import {
   MapContainer,
   TileLayer,
   Marker,
-  useMap,
-  ZoomControl,
 } from "react-leaflet";
 import { Icon, LatLngLiteral } from "leaflet";
 import "leaflet/dist/leaflet.css";

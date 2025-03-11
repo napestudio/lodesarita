@@ -7,7 +7,7 @@ import VideoModal from "./modal";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { gsap } from "gsap";
 import { useMediaQuery } from "@mantine/hooks";
-import MapComponent from "@/components/maps/map";
+import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * Props for `Video`.
@@ -55,10 +55,10 @@ const Video = ({ slice }: VideoProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-10 overflow-hidden bg-green"
+      className="container py-10 overflow-hidden bg-green"
     >
-      {/* <div
-        className="overflow-hidden relative w-full h-full cursor-pointer mx-auto max-w-[90vw] rounded-3xl"
+      <div
+        className="overflow-hidden relative w-full h-full cursor-pointer mx-auto rounded-3xl"
         ref={videoRef}
       >
         <div
@@ -93,8 +93,7 @@ const Video = ({ slice }: VideoProps): JSX.Element => {
         action={handleModal}
         open={openModal}
         ytUrl={slice.primary.urlyoutube!}
-      /> */}
-      <MapComponent />
+      />
     </section>
   );
 };

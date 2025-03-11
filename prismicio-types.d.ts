@@ -48,6 +48,7 @@ export type CaracteristicaDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | MapSlice
   | ImageTextSlice
   | FooterSlice
   | VideoSlice
@@ -345,7 +346,7 @@ export interface HeroSliceDefaultPrimaryVideosItem {
    * - **API ID Path**: hero.default.primary.videos[].video
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  video: prismic.LinkToMediaField;
+  video: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
@@ -499,6 +500,33 @@ export type ImageTextSlice = prismic.SharedSlice<
   "image_text",
   ImageTextSliceVariation
 >;
+
+/**
+ * Default variation for Map Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MapSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Map*
+ */
+type MapSliceVariation = MapSliceDefault;
+
+/**
+ * Map Shared Slice
+ *
+ * - **API ID**: `map`
+ * - **Description**: Map
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MapSlice = prismic.SharedSlice<"map", MapSliceVariation>;
 
 /**
  * Item in *Room → Default → Primary → Caracteristicas*
@@ -728,7 +756,7 @@ export interface VideoSliceDefaultPrimary {
    * - **API ID Path**: video.default.primary.video
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  video: prismic.LinkToMediaField;
+  video: prismic.LinkToMediaField<prismic.FieldState, never>;
 
   /**
    * image field in *Video → Default → Primary*
@@ -819,6 +847,9 @@ declare module "@prismicio/client" {
       ImageTextSliceDefaultPrimary,
       ImageTextSliceVariation,
       ImageTextSliceDefault,
+      MapSlice,
+      MapSliceVariation,
+      MapSliceDefault,
       RoomSlice,
       RoomSliceDefaultPrimaryCaracteristicasItem,
       RoomSliceDefaultPrimaryFotosItem,
