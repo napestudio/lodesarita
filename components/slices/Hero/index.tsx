@@ -32,10 +32,6 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   const ctaRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    scroller?.stop();
-  }, [scroller]);
-
-  useEffect(() => {
     const ctx = gsap.context(() => {
       const state = Flip.getState(heroRef.current);
       const videoState = Flip.getState(videoWrapperRef.current);
@@ -44,6 +40,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px)", () => {
+        scroller?.stop();
         const tl = gsap.timeline({ paused: true }).to("[data-logo]", {
           opacity: 1,
           duration: 1,
@@ -90,6 +87,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                 }).to(ctaRef.current, {
                   y: 0,
                   opacity: 1,
+                  onComplete: () => {
+                    scroller?.start();
+                  },
                 });
               },
             });
