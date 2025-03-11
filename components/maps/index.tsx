@@ -12,12 +12,6 @@ import "leaflet/dist/leaflet.css";
 type MapLocation = LatLngLiteral;
 type MapProps = { center: LatLngLiteral; locations: MapLocation[] };
 
-const SelectedLocation = ({ center }: { center: LatLngLiteral }) => {
-  const map = useMap();
-  map.panTo(center, { animate: true });
-  return null;
-};
-
 export default function Map({ center, locations }: MapProps) {
   const mapMarkIcon = useMemo(
     () =>
@@ -36,6 +30,11 @@ export default function Map({ center, locations }: MapProps) {
         minZoom={5}
         zoomControl={false}
         attributionControl={false}
+        dragging={false}
+        scrollWheelZoom={false}
+        doubleClickZoom={false}
+        touchZoom={false}
+        keyboard={false}
         style={{ width: "100%", height: "100%", borderRadius: ".75rem" }}
       >
         <TileLayer url="http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}" />
@@ -46,7 +45,7 @@ export default function Map({ center, locations }: MapProps) {
             position={{ lat: location.lat, lng: location.lng }}
           />
         ))}
-        <ZoomControl position="topright" />
+        {/* <ZoomControl position="topright" /> */}
       </MapContainer>
     </div>
   );
