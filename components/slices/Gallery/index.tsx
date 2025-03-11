@@ -29,8 +29,6 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(gridRef.current, { scale: 1, gap: "1rem" });
-
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px)", () => {
@@ -52,6 +50,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
           markers: false,
         });
       });
+      gsap.set(gridRef.current, { scale: 1, gap: "1rem" });
     }, [gridRef.current]);
 
     return () => ctx.revert();
@@ -59,7 +58,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
 
   return (
     <section
-      className="py-16 md:py-0 px-5 md:px-0 overflow-hidden bg-green"
+      className="py-16 md:py-0 px-5 md:px-0 overflow-hidden "
       ref={sectionRef}
     >
       <div ref={gridRef} className="grid grid-cols-12">

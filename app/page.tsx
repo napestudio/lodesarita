@@ -11,7 +11,7 @@ export default async function Page() {
   const page = await client.getSingle("home");
   
   return (
-    <main className="bg-green">
+    <main className="bg-green overflow-x-hidden">
       <SliceZone slices={page.data.slices} components={components} />
     </main>
   );
