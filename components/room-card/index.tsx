@@ -90,7 +90,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
 
   return (
     <div className="group" ref={cardRef}>
-      <div className="grid gap-10 items-end md:grid-cols-2">
+      <div className="grid gap-10 items-end xl:items-start md:grid-cols-2">
         <div className="group-even:order-2 group-even:pt-0 group-even:pb-8 pt-8 md:block hidden">
           <div className="relative w-max overflow-hidden rounded-xl">
             <div
@@ -120,7 +120,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
 
           <div className="pb-10 md:group-even:pt-10 grid">
             <h3
-              className="text-4xl md:text-7xl font-text font-bold text-yellow md:mb-2 flex gap-5 items-center mt-6 md:mt-0"
+              className="text-4xl md:text-7xl font-text font-bold text-yellow md:mb-2 flex gap-5 items-center mt-6 md:mt-0 xl:mt-8"
               ref={cardTitleRef}
             >
               <svg
