@@ -135,7 +135,6 @@ export default function Modal() {
     const nights = Math.round(
       (checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24)
     );
-    console.log("Data form:", reservationData);
 
     const message = `
     *Nueva Reserva*
