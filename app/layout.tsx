@@ -26,6 +26,31 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRPTION,
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: "/favicon.ico",
+    apple: [
+      {
+        rel: "apple-touch-icon",
+        url: "/apple-touch-icon-57x57.png",
+        sizes: "57x57",
+      },
+      {
+        rel: "apple-touch-icon",
+        url: "/apple-touch-icon-114x114.png",
+        sizes: "114x114",
+      },
+      {
+        rel: "apple-touch-icon",
+        url: "/apple-touch-icon-72x72.png",
+        sizes: "72x72",
+      },
+      {
+        rel: "apple-touch-icon",
+        url: "/apple-touch-icon-144x144.png",
+        sizes: "144x144",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

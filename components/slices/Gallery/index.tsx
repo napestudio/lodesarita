@@ -43,7 +43,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
         ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top top",
-          end: "bottom+=250",
+          end: "bottom+=50",
           animation: tl,
           pin: true,
           scrub: true,
@@ -69,6 +69,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
               className="w-full h-full object-cover rounded-xl"
               width={image.imagen.dimensions?.width}
               height={image.imagen.dimensions?.height}
+              alt=""
             />
           </div>
         ))}
