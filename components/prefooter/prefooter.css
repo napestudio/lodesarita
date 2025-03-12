@@ -1,0 +1,7 @@
+.big_title {
+  font-size: clamp(3rem, 29vw, calc(44rem - 1vw));
+  text-align: center;
+  line-height: 1;
+  color: var(--yellow);
+  margin-bottom: -3rem;
+}
