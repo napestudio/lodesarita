@@ -40,7 +40,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px)", () => {
-        scroller?.stop();
+        // scroller?.stop();
         const tl = gsap.timeline({ paused: true }).to("[data-logo]", {
           opacity: 1,
           duration: 1,
@@ -96,7 +96,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           },
         });
 
-        tl.play();
+        // tl.play();
       });
 
       mm.add("(max-width: 768px)", () => {
