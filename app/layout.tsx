@@ -38,7 +38,7 @@ export default function RootLayout({
       lang={SITE_LANG}
       className={cn([primaryFont.variable, secondaryFont.variable])}
     >
-      <body>
+      <body className="bg-green">
         <Client />
         <Modal />
         {/* <NavBar /> */}

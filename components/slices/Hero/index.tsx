@@ -20,6 +20,8 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
+  const { isModalOpen, setIsModalOpen, selectedValue, setSelectedValue } =
+    useGlobal();
   const scroller = useGlobal((s) => s.scroller);
   const { openModalWithSelection } = useGlobal();
 
@@ -36,7 +38,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       const videoSmallState = Flip.getState(video2WrapperRef.current);
       const textRefState = Flip.getState(textRef.current);
       const mm = gsap.matchMedia();
+
       mm.add("(min-width: 768px)", () => {
+        scroller?.stop();
         const tl = gsap.timeline({ paused: true }).to("[data-logo]", {
           opacity: 1,
           duration: 1,
@@ -83,6 +87,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                 }).to(ctaRef.current, {
                   y: 0,
                   opacity: 1,
+                  onComplete: () => {
+                    scroller?.start();
+                  },
                 });
               },
             });
@@ -107,7 +114,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     }, [heroRef.current]);
 
     return () => ctx.revert();
-  }, []);
+  }, [scroller]);
 
   return (
     <header ref={heroRef} className="w-dvw max-w-full bg-green" data-hero>
