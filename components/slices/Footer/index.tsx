@@ -50,7 +50,7 @@ const Footer = ({ slice }: FooterProps): JSX.Element => {
       ScrollTrigger.create({
         trigger: footerRef.current,
         start: "top center",
-        end: "center center",
+        end: "center top",
         animation: tl,
         scrub: false,
         markers: false,

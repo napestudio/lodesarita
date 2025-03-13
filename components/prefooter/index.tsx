@@ -23,7 +23,7 @@ export default function PreFooter() {
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top center",
-        end: "center center",
+        end: "center top",
         animation: tl,
         scrub: false,
       });
