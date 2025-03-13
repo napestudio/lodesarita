@@ -14,7 +14,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
   return (
     <section className="py-16 md:py-24 bg-green">
       <div className="container">
-        <div className="py-20 grid md:grid-cols-2 gap-5">
+        <div className="md:py-20 grid md:grid-cols-2 gap-5">
           <div className="flex flex-col items-start justify-center gap-5">
             <h2 className="text-5xl md:text-7xl text-yellow">
               {slice.primary.title}
