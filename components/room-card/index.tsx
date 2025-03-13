@@ -93,10 +93,12 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
         .timeline({ paused: true })
         .from([dataImageContainer, dataTextContainer], {
           x: 0,
+          y: 0,
+          ease: "power1.inOut",
           scrollTrigger: {
             trigger: cardRef.current,
-            start: "top center",
-            end: "bottom center",
+            start: "-200 center",
+            end: "bottom-=200 center",            
             scrub: true,
           },
         });
@@ -118,7 +120,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
       <div className="grid gap-10 items-end xl:items-start md:grid-cols-2">
         <div
           data-image-container
-          className="md:group-even:order-2 pt-8 md:block translate-x-4 md:group-even:-translate-x-4"
+          className="md:group-even:order-2 pt-8 md:block translate-x-4 md:group-even:-translate-x-4 -translate-y-4"
         >
           <div className="relative overflow-hidden rounded-xl">
             <div
@@ -136,7 +138,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
         </div>
         <div
           data-text-container
-          className="h-full flex flex-col -translate-x-4 md:group-even:translate-x-4"
+          className="h-full flex flex-col -translate-x-4 md:group-even:translate-x-4 translate-y-4"
         >
           <div className="pb-10 md:group-even:pt-10 grid space-y-4">
             <h3
