@@ -5,12 +5,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 export default function PreFooter() {
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    const footerEl = document.querySelector("[data-footer]");
-
-    if (!footerEl) return;
-
     const ctx = gsap.context(() => {
       gsap.set(titleRef.current, {
         yPercent: 100,
@@ -24,7 +21,7 @@ export default function PreFooter() {
       });
 
       ScrollTrigger.create({
-        trigger: footerEl,
+        trigger: containerRef.current,
         start: "top center",
         end: "center center",
         animation: tl,
@@ -35,8 +32,10 @@ export default function PreFooter() {
     return () => ctx.revert();
   }, []);
   return (
-    <h2 className="big_title" ref={titleRef}>
-      SARITA
-    </h2>
+    <div ref={containerRef}>
+      <h2 className="big_title" ref={titleRef}>
+        SARITA
+      </h2>
+    </div>
   );
 }

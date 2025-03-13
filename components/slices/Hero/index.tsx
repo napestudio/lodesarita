@@ -87,16 +87,16 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                 }).to(ctaRef.current, {
                   y: 0,
                   opacity: 1,
-                  onComplete: () => {
-                    scroller?.start();
-                  },
+                  // onComplete: () => {
+                  //   scroller?.start();
+                  // },
                 });
               },
             });
           },
         });
 
-        // tl.play();
+        tl.play();
       });
 
       mm.add("(max-width: 768px)", () => {
