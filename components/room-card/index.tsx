@@ -22,10 +22,12 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
     const maskSmall = cardRef.current?.querySelector("[data-mask-small]");
     const descriptionEl = cardRef.current?.querySelector("[data-description]");
     const ctaEl = cardRef.current?.querySelector("[data-cta]");
+    const datas = cardRef.current?.querySelectorAll("[data-datas]");
 
     if (
       !imageBig ||
       !maskBig ||
+      !datas ||
       !imageSmall ||
       !maskSmall ||
       !cardTitleRef.current ||
@@ -46,6 +48,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
           { opacity: 1, duration: 1, ease: "power1.inOut" },
           "0.5"
         )
+        .to(datas, { opacity: 1, duration: 1, ease: "power1.inOut", stagger: 0.05 }, "0.5")
         .to(ctaEl, { opacity: 1, duration: 1, ease: "power1.inOut" }, "0.8");
 
       ScrollTrigger.create({
@@ -54,8 +57,9 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
         end: "center center",
         animation: tl,
         scrub: false,
-        markers: false,
+        //markers: true,
       });
+      
       const letters = gsap.utils.toArray<HTMLSpanElement>("[data-letter]");
 
       gsap.fromTo(
@@ -91,7 +95,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
   return (
     <div className="group" ref={cardRef}>
       <div className="grid gap-10 items-end xl:items-start md:grid-cols-2">
-        <div className="group-even:order-2 group-even:pt-0 group-even:pb-8 pt-8 md:block ">
+        <div className="md:group-even:order-2 pt-8 md:block ">
           <div className="relative overflow-hidden rounded-xl">
             <div
               className="absolute h-full w-full inset-0 origin-right z-10 scale-y-105 rounded-xl"
@@ -100,6 +104,8 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
             <PrismicNextImage
               className="object-cover w-[30rem] md:h-[55vh] xl:h-[75vh] 2xl:h-[65vh] scale-105 md:max-w-[45vw] rounded-xl"
               field={room.data.slices[0].primary.miniatura}
+              width={room.data.slices[0].primary.miniatura.dimentions?.width}
+              height={room.data.slices[0].primary.miniatura.dimentions?.height}
               data-image-big
             />
           </div>
@@ -140,11 +146,11 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
             <div className="flex justify-start gap-4">
               {room.data.slices[0].primary.caracteristicas.map(
                 (item: any, i: number) => (
-                  <div key={i} className="relative overflow-hidden rounded-xl ">
-                    <div
+                  <div key={i} data-datas className="relative overflow-hidden rounded-xl opacity-0">
+                    {/* <div
                       className="absolute h-full w-full inset-0 origin-bottom z-10 scale-y-105"
                       data-mask-small
-                    ></div>
+                    ></div> */}
                     <PrismicNextImage
                       className="object-cover aspect-square rounded-full w-10 bg-yellow p-2"
                       field={item.icon}
