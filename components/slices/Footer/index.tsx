@@ -18,14 +18,11 @@ export type FooterProps = SliceComponentProps<Content.FooterSlice>;
 const Footer = ({ slice }: FooterProps): JSX.Element => {
   const footerBottomRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const footerEl = document.querySelector("[data-footer]");
-    if (!footerEl) return;
-    const p = footerEl.querySelectorAll("[data-footer] p");
-
     const ctx = gsap.context(() => {
-      gsap.set(p, {
+      gsap.set(".fade-in-p", {
         opacity: 0,
       });
       gsap.set(logoRef.current, {
@@ -33,7 +30,7 @@ const Footer = ({ slice }: FooterProps): JSX.Element => {
       });
       const tl = gsap
         .timeline({ paused: true })
-        .to(p, {
+        .to(".fade-in-p", {
           duration: 1,
           opacity: 1,
           ease: "power1.inOut",
@@ -51,19 +48,20 @@ const Footer = ({ slice }: FooterProps): JSX.Element => {
         );
 
       ScrollTrigger.create({
-        trigger: footerEl,
+        trigger: footerRef.current,
         start: "top center",
-        end: "center center",
+        end: "center top",
         animation: tl,
         scrub: false,
         markers: false,
       });
-    }, [footerBottomRef.current]);
+    }, [footerRef.current]);
 
     return () => ctx.revert();
   }, []);
+
   return (
-    <footer className="pb-20" data-footer>
+    <footer className="pb-20" ref={footerRef}>
       <div className="overflow-hidden">
         <PreFooter />
       </div>
@@ -72,13 +70,10 @@ const Footer = ({ slice }: FooterProps): JSX.Element => {
         className="flex flex-col gap-8 justify-between items-center"
         ref={footerBottomRef}
       >
-        <div
-          className="font-text text-yellow font-semibold text-center"
-          data-fadein
-        >
-          <p className="">Tel.: 2262324027</p>
-          <p className="">Mail: lodesaritahosteria@gmail.com</p>
-          <p className="">
+        <div className="font-text text-yellow font-semibold text-center">
+          <p className="fade-in-p">Tel.: 2262324027</p>
+          <p className="fade-in-p">Mail: lodesaritahosteria@gmail.com</p>
+          <p className="fade-in-p">
             Calle 81 #261 (entre 4 y 6), Necochea, Costa Atlántica.
           </p>
         </div>
