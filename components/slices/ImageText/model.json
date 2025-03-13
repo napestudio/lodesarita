@@ -33,6 +33,14 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "logo": {
+          "type": "Image",
+          "config": {
+            "label": "logo",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {}
