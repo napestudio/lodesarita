@@ -22,6 +22,12 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
     const maskSmall = cardRef.current?.querySelector("[data-mask-small]");
     const descriptionEl = cardRef.current?.querySelector("[data-description]");
     const ctaEl = cardRef.current?.querySelector("[data-cta]");
+    const dataImageContainer = cardRef.current?.querySelector(
+      "[data-image-container]"
+    );
+    const dataTextContainer = cardRef.current?.querySelector(
+      "[data-text-container]"
+    );
     const datas = cardRef.current?.querySelectorAll("[data-datas]");
 
     if (
@@ -48,7 +54,11 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
           { opacity: 1, duration: 1, ease: "power1.inOut" },
           "0.5"
         )
-        .to(datas, { opacity: 1, duration: 1, ease: "power1.inOut", stagger: 0.05 }, "0.5")
+        .to(
+          datas,
+          { opacity: 1, duration: 1, ease: "power1.inOut", stagger: 0.05 },
+          "0.5"
+        )
         .to(ctaEl, { opacity: 1, duration: 1, ease: "power1.inOut" }, "0.8");
 
       ScrollTrigger.create({
@@ -59,9 +69,8 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
         scrub: false,
         //markers: true,
       });
-      
-      const letters = gsap.utils.toArray<HTMLSpanElement>("[data-letter]");
 
+      const letters = gsap.utils.toArray<HTMLSpanElement>("[data-letter]");
       gsap.fromTo(
         letters,
         { y: "100%", opacity: 0 },
@@ -79,6 +88,18 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
           },
         }
       );
+
+      gsap
+        .timeline({ paused: true })
+        .from([dataImageContainer, dataTextContainer], {
+          x: 0,
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: "top center",
+            end: "bottom center",
+            scrub: true,
+          },
+        });
     }, [cardRef.current]);
 
     return () => ctx.revert();
@@ -95,7 +116,10 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
   return (
     <div className="group" ref={cardRef}>
       <div className="grid gap-10 items-end xl:items-start md:grid-cols-2">
-        <div className="md:group-even:order-2 pt-8 md:block ">
+        <div
+          data-image-container
+          className="md:group-even:order-2 pt-8 md:block translate-x-4 md:group-even:-translate-x-4"
+        >
           <div className="relative overflow-hidden rounded-xl">
             <div
               className="absolute h-full w-full inset-0 origin-right z-10 scale-y-105 rounded-xl"
@@ -110,7 +134,10 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
             />
           </div>
         </div>
-        <div className="h-full flex flex-col">
+        <div
+          data-text-container
+          className="h-full flex flex-col -translate-x-4 md:group-even:translate-x-4"
+        >
           <div className="pb-10 md:group-even:pt-10 grid space-y-4">
             <h3
               className="text-4xl md:text-7xl font-text font-bold text-yellow md:mb-2 flex gap-5 items-center mt-6 md:mt-0 xl:mt-8"
@@ -146,7 +173,11 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
             <div className="flex justify-start gap-4">
               {room.data.slices[0].primary.caracteristicas.map(
                 (item: any, i: number) => (
-                  <div key={i} data-datas className="relative overflow-hidden rounded-xl opacity-0">
+                  <div
+                    key={i}
+                    data-datas
+                    className="relative overflow-hidden rounded-xl opacity-0"
+                  >
                     {/* <div
                       className="absolute h-full w-full inset-0 origin-bottom z-10 scale-y-105"
                       data-mask-small
