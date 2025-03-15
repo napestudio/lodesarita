@@ -4,12 +4,15 @@ import { PrismicNextImage } from "@prismicio/next";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Link from "next/link";
+
+import { useMediaQuery } from "@mantine/hooks";
 import { useGlobal } from "@/lib/store";
+import { cn } from "@/lib/utils";
 
 // gsap.registerPlugin(ScrollTrigger);
 
 export default function RoomCard({ room }: { room: PrismicDocument }) {
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const { openModalWithSelection } = useGlobal();
 
   const cardRef = useRef<HTMLDivElement>(null);
@@ -22,12 +25,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
     const maskSmall = cardRef.current?.querySelector("[data-mask-small]");
     const descriptionEl = cardRef.current?.querySelector("[data-description]");
     const ctaEl = cardRef.current?.querySelector("[data-cta]");
-    const dataImageContainer = cardRef.current?.querySelector(
-      "[data-image-container]"
-    );
-    const dataTextContainer = cardRef.current?.querySelector(
-      "[data-text-container]"
-    );
+
     const datas = cardRef.current?.querySelectorAll("[data-datas]");
 
     if (
@@ -88,24 +86,36 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
           },
         }
       );
-
-      gsap
-        .timeline({ paused: true })
-        .from([dataImageContainer, dataTextContainer], {
-          x: 0,
-          y: 0,
-          ease: "power1.inOut",
-          scrollTrigger: {
-            trigger: cardRef.current,
-            start: "-200 center",
-            end: "bottom-=200 center",            
-            scrub: true,
-          },
-        });
     }, [cardRef.current]);
 
     return () => ctx.revert();
   }, []);
+
+  useEffect(() => {
+    const dataImageContainer = cardRef.current?.querySelector("[data-image-container]") as HTMLImageElement;
+    const dataTextContainer = cardRef.current?.querySelector("[data-text-container]") as HTMLElement;
+
+    const ctx = gsap.context(() => {
+      if (!isSmallScreen) { 
+        gsap
+          .timeline({ paused: true })
+          .from([dataImageContainer, dataTextContainer], {
+            x: 0,
+            y: 0,
+            ease: "power1.inOut",
+            scrollTrigger: {
+              trigger: cardRef.current,
+              start: "-200 center",
+              end: "bottom-=200 center",
+              scrub: true,
+              toggleActions: "play none none revert",
+            },
+          });
+      }
+    }, [cardRef.current]);
+
+    return () => ctx.revert();
+  }, [isSmallScreen]);
 
   const splitText = (text: string) => {
     return text.split("").map((char, index) => (
@@ -117,10 +127,10 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
 
   return (
     <div className="group" ref={cardRef}>
-      <div className="grid gap-10 items-end xl:items-start md:grid-cols-2">
+      <div className="grid gap-0 md:gap-20 items-end xl:items-start md:grid-cols-2">
         <div
           data-image-container
-          className="md:group-even:order-2 pt-8 md:block translate-x-4 md:group-even:-translate-x-4 -translate-y-4"
+          className={cn("md:group-even:order-2 pt-8 md:block  ", (!isSmallScreen? "translate-x-4 md:group-even:-translate-x-4 -translate-y-4":""))} //!isSmallScreen
         >
           <div className="relative overflow-hidden rounded-xl">
             <div
@@ -128,7 +138,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
               data-mask
             ></div>
             <PrismicNextImage
-              className="object-cover w-[30rem] md:h-[55vh] xl:h-[75vh] 2xl:h-[65vh] scale-105 md:max-w-[45vw] rounded-xl"
+              className="object-cover w-full md:h-[55vh] xl:h-[75vh] 2xl:h-[65vh] scale-105 md:max-w-[45vw] rounded-xl"
               field={room.data.slices[0].primary.miniatura}
               width={room.data.slices[0].primary.miniatura.dimentions?.width}
               height={room.data.slices[0].primary.miniatura.dimentions?.height}
@@ -138,7 +148,7 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
         </div>
         <div
           data-text-container
-          className="h-full flex flex-col -translate-x-4 md:group-even:translate-x-4 translate-y-4"
+          className={cn("h-full flex flex-col ", (!isSmallScreen? "-translate-x-4 md:group-even:translate-x-4 translate-y-4":""))}
         >
           <div className="pb-10 md:group-even:pt-10 grid space-y-4">
             <h3

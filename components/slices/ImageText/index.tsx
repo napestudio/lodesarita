@@ -22,7 +22,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
                 height={slice.primary.logo.dimensions?.height}
                 className="w-60 mx-auto"
               />
-            <p className="font-text text-xl font-medium text-balance text-white leading-6">
+            <p className="font-text text-xl font-medium text-center text-balance text-white leading-6">
               {slice.primary.description}
             </p>
           </div>
