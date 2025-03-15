@@ -92,11 +92,17 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
   }, []);
 
   useEffect(() => {
-    const dataImageContainer = cardRef.current?.querySelector("[data-image-container]") as HTMLImageElement;
-    const dataTextContainer = cardRef.current?.querySelector("[data-text-container]") as HTMLElement;
+    const dataImageContainer = cardRef.current?.querySelector(
+      "[data-image-container]"
+    ) as HTMLImageElement;
+    const dataTextContainer = cardRef.current?.querySelector(
+      "[data-text-container]"
+    ) as HTMLElement;
 
+    if (!dataImageContainer || !dataTextContainer) return;
+    
     const ctx = gsap.context(() => {
-      if (!isSmallScreen) { 
+      if (!isSmallScreen) {
         gsap
           .timeline({ paused: true })
           .from([dataImageContainer, dataTextContainer], {
@@ -130,7 +136,12 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
       <div className="grid gap-0 md:gap-20 items-end xl:items-start md:grid-cols-2">
         <div
           data-image-container
-          className={cn("md:group-even:order-2 pt-8 md:block  ", (!isSmallScreen? "translate-x-4 md:group-even:-translate-x-4 -translate-y-4":""))} //!isSmallScreen
+          className={cn(
+            "md:group-even:order-2 pt-8 md:block  ",
+            !isSmallScreen
+              ? "translate-x-4 md:group-even:-translate-x-4 -translate-y-4"
+              : ""
+          )} //!isSmallScreen
         >
           <div className="relative overflow-hidden rounded-xl">
             <div
@@ -148,7 +159,12 @@ export default function RoomCard({ room }: { room: PrismicDocument }) {
         </div>
         <div
           data-text-container
-          className={cn("h-full flex flex-col ", (!isSmallScreen? "-translate-x-4 md:group-even:translate-x-4 translate-y-4":""))}
+          className={cn(
+            "h-full flex flex-col ",
+            !isSmallScreen
+              ? "-translate-x-4 md:group-even:translate-x-4 translate-y-4"
+              : ""
+          )}
         >
           <div className="pb-10 md:group-even:pt-10 grid space-y-4">
             <h3
