@@ -5,3 +5,9 @@
   color: var(--yellow);
   margin-bottom: -3rem;
 }
+
+@media (max-width: 480px) {
+  .big_title {
+    margin-bottom: 0;
+  }
+}
