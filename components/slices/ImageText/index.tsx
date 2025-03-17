@@ -16,10 +16,13 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
       <div className="container">
         <div className="md:py-20 grid md:grid-cols-2 gap-5">
           <div className="flex flex-col items-start justify-center gap-5">
-            <h2 className="text-5xl md:text-7xl text-yellow">
-              {slice.primary.title}
-            </h2>
-            <p className="font-text text-xl font-medium text-balance text-white leading-6">
+              <PrismicNextImage
+                field={slice.primary.logo}
+                width={slice.primary.logo.dimensions?.width}
+                height={slice.primary.logo.dimensions?.height}
+                className="w-60 mx-auto"
+              />
+            <p className="mb-4 md:mb-0 font-text text-xl font-medium text-justify sm:text-left text-balance text-white leading-6">
               {slice.primary.description}
             </p>
           </div>
