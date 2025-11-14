@@ -1,5 +1,5 @@
-export const SITE_NAME = `Lo de Sarita`;
-export const SITE_DESCRPTION = `Hosteria en la costa.`;
+export const SITE_NAME = `Lo de Sarita hosteria en Necochea`;
+export const SITE_DESCRPTION = `Hosteria en la costa atlántica en Necochea, Buenos Aires. Playa, mar, vacaciones, familia, descanso y sol.`;
 export const SITE_LANG = "es";
 export const SITE_URL =
   (process.env.NEXT_PUBLIC_SITE_URL?.startsWith("https://")
