@@ -35,3 +35,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .qodo
+
+robots.txt
+sitemap.xml
+sitemap-0.xml
