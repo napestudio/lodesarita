@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "slicemachine": "start-slicemachine"
@@ -22,6 +23,7 @@
     "leaflet": "^1.9.4",
     "lenis": "^1.2.3",
     "next": "^15.2.1",
+    "next-sitemap": "^4.2.3",
     "next-transition-router": "^0.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
