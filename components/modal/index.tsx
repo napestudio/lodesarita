@@ -108,9 +108,9 @@ export default function Modal() {
   const getRoomTypeText = (type: "doble" | "triple" | "matrimonial" | null) => {
     switch (type) {
       case "doble":
-        return "Habitación Simple";
-      case "triple":
         return "Habitación Doble";
+      case "triple":
+        return "Habitación Triple";
       case "matrimonial":
         return "Habitación Matrimonial";
       default:
