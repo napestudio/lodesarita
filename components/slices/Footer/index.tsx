@@ -71,7 +71,7 @@ const Footer = ({ slice }: FooterProps): JSX.Element => {
         ref={footerBottomRef}
       >
         <div className="font-text text-yellow font-semibold text-center">
-          <p className="fade-in-p">Tel.: 2262324027</p>
+          <p className="fade-in-p">Tel.: 2262322434</p>
           <p className="fade-in-p">Mail: lodesaritahosteria@gmail.com</p>
           <p className="fade-in-p">
             Calle 81 #261 (entre 4 y 6), Necochea, Costa Atlántica.
