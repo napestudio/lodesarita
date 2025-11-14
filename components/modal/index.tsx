@@ -147,7 +147,7 @@ export default function Modal() {
     Origen: ${data.origin}
         `.trim();
 
-    const phoneNumber = "+5493415807001";
+    const phoneNumber = "+5492262322434";
 
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
